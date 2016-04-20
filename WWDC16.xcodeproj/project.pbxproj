@@ -7,27 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF2AF29D1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */; };
+		BF2AF29E1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */; };
+		BF99BB081CC7C9AA003133AD /* WWDCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB061CC7C9AA003133AD /* WWDCColor.swift */; };
+		BF99BB091CC7C9AA003133AD /* WWDCTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */; };
+		BF99BB0C1CC7CA3A003133AD /* WWDCTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */; };
+		BF99BB0D1CC7CA3A003133AD /* WWDCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB061CC7C9AA003133AD /* WWDCColor.swift */; };
 		BFB6220B1CC5E55D0094C945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6220A1CC5E55D0094C945 /* AppDelegate.swift */; };
-		BFB6220D1CC5E55D0094C945 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6220C1CC5E55D0094C945 /* art.scnassets */; };
 		BFB6220F1CC5E55D0094C945 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6220E1CC5E55D0094C945 /* GameViewController.swift */; };
 		BFB622121CC5E55D0094C945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB622101CC5E55D0094C945 /* Main.storyboard */; };
 		BFB622141CC5E55D0094C945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB622131CC5E55D0094C945 /* Assets.xcassets */; };
 		BFB622171CC5E55D0094C945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB622151CC5E55D0094C945 /* LaunchScreen.storyboard */; };
+		BFB622261CC5E5770094C945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB622251CC5E5770094C945 /* AppDelegate.swift */; };
+		BFB622281CC5E5770094C945 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB622271CC5E5770094C945 /* GameView.swift */; };
+		BFB6222A1CC5E5770094C945 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB622291CC5E5770094C945 /* GameViewController.swift */; };
+		BFB6222E1CC5E5770094C945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6222D1CC5E5770094C945 /* Assets.xcassets */; };
+		BFB622311CC5E5770094C945 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFB6222F1CC5E5770094C945 /* MainMenu.xib */; };
+		BFB622381CC5E65A0094C945 /* WWDCMainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB622371CC5E65A0094C945 /* WWDCMainScene.swift */; };
+		BFB622391CC5E65A0094C945 /* WWDCMainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB622371CC5E65A0094C945 /* WWDCMainScene.swift */; };
+		BFB6223C1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */; };
+		BFB6223D1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCFloor.swift; path = Shared/WWDCFloor.swift; sourceTree = "<group>"; };
+		BF99BB061CC7C9AA003133AD /* WWDCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCColor.swift; path = Shared/WWDCColor.swift; sourceTree = "<group>"; };
+		BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCTimeline.swift; path = Shared/WWDCTimeline.swift; sourceTree = "<group>"; };
 		BFB622071CC5E55D0094C945 /* WWDC16iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC16iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB6220A1CC5E55D0094C945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFB6220C1CC5E55D0094C945 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		BFB6220E1CC5E55D0094C945 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BFB622111CC5E55D0094C945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFB622131CC5E55D0094C945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFB622161CC5E55D0094C945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFB622181CC5E55D0094C945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFB622231CC5E5770094C945 /* WWDC16macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC16macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFB622251CC5E5770094C945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFB622271CC5E5770094C945 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		BFB622291CC5E5770094C945 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		BFB6222D1CC5E5770094C945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFB622301CC5E5770094C945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BFB622321CC5E5770094C945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFB622371CC5E65A0094C945 /* WWDCMainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCMainScene.swift; path = Shared/WWDCMainScene.swift; sourceTree = "<group>"; };
+		BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = SceneAssets.scnassets; path = Shared/SceneAssets.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BFB622041CC5E55D0094C945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB622201CC5E5770094C945 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,7 +72,9 @@
 		BFB621FE1CC5E55D0094C945 = {
 			isa = PBXGroup;
 			children = (
-				BFB622091CC5E55D0094C945 /* WWDC16iOS */,
+				BFB622361CC5E5A70094C945 /* Shared */,
+				BFB622091CC5E55D0094C945 /* iOS */,
+				BFB622241CC5E5770094C945 /* macOS */,
 				BFB622081CC5E55D0094C945 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,22 +83,49 @@
 			isa = PBXGroup;
 			children = (
 				BFB622071CC5E55D0094C945 /* WWDC16iOS.app */,
+				BFB622231CC5E5770094C945 /* WWDC16macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BFB622091CC5E55D0094C945 /* WWDC16iOS */ = {
+		BFB622091CC5E55D0094C945 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				BFB6220A1CC5E55D0094C945 /* AppDelegate.swift */,
-				BFB6220C1CC5E55D0094C945 /* art.scnassets */,
 				BFB6220E1CC5E55D0094C945 /* GameViewController.swift */,
 				BFB622101CC5E55D0094C945 /* Main.storyboard */,
 				BFB622131CC5E55D0094C945 /* Assets.xcassets */,
 				BFB622151CC5E55D0094C945 /* LaunchScreen.storyboard */,
 				BFB622181CC5E55D0094C945 /* Info.plist */,
 			);
+			name = iOS;
 			path = WWDC16iOS;
+			sourceTree = "<group>";
+		};
+		BFB622241CC5E5770094C945 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				BFB622251CC5E5770094C945 /* AppDelegate.swift */,
+				BFB622271CC5E5770094C945 /* GameView.swift */,
+				BFB622291CC5E5770094C945 /* GameViewController.swift */,
+				BFB6222D1CC5E5770094C945 /* Assets.xcassets */,
+				BFB6222F1CC5E5770094C945 /* MainMenu.xib */,
+				BFB622321CC5E5770094C945 /* Info.plist */,
+			);
+			name = macOS;
+			path = WWDC16macOS;
+			sourceTree = "<group>";
+		};
+		BFB622361CC5E5A70094C945 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BFB622371CC5E65A0094C945 /* WWDCMainScene.swift */,
+				BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */,
+				BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */,
+				BF99BB061CC7C9AA003133AD /* WWDCColor.swift */,
+				BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +148,23 @@
 			productReference = BFB622071CC5E55D0094C945 /* WWDC16iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BFB622221CC5E5770094C945 /* WWDC16macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFB622331CC5E5770094C945 /* Build configuration list for PBXNativeTarget "WWDC16macOS" */;
+			buildPhases = (
+				BFB6221F1CC5E5770094C945 /* Sources */,
+				BFB622201CC5E5770094C945 /* Frameworks */,
+				BFB622211CC5E5770094C945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WWDC16macOS;
+			productName = WWDC16macOS;
+			productReference = BFB622231CC5E5770094C945 /* WWDC16macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -100,9 +178,12 @@
 					BFB622061CC5E55D0094C945 = {
 						CreatedOnToolsVersion = 7.3;
 					};
+					BFB622221CC5E5770094C945 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 				};
 			};
-			buildConfigurationList = BFB622021CC5E55D0094C945 /* Build configuration list for PBXProject "WWDC16iOS" */;
+			buildConfigurationList = BFB622021CC5E55D0094C945 /* Build configuration list for PBXProject "WWDC16" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -116,6 +197,7 @@
 			projectRoot = "";
 			targets = (
 				BFB622061CC5E55D0094C945 /* WWDC16iOS */,
+				BFB622221CC5E5770094C945 /* WWDC16macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -125,10 +207,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFB6220D1CC5E55D0094C945 /* art.scnassets in Resources */,
 				BFB622171CC5E55D0094C945 /* LaunchScreen.storyboard in Resources */,
 				BFB622141CC5E55D0094C945 /* Assets.xcassets in Resources */,
 				BFB622121CC5E55D0094C945 /* Main.storyboard in Resources */,
+				BFB6223C1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB622211CC5E5770094C945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB6223D1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */,
+				BFB6222E1CC5E5770094C945 /* Assets.xcassets in Resources */,
+				BFB622311CC5E5770094C945 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +231,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB622381CC5E65A0094C945 /* WWDCMainScene.swift in Sources */,
+				BF2AF29D1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */,
+				BF99BB081CC7C9AA003133AD /* WWDCColor.swift in Sources */,
 				BFB6220F1CC5E55D0094C945 /* GameViewController.swift in Sources */,
 				BFB6220B1CC5E55D0094C945 /* AppDelegate.swift in Sources */,
+				BF99BB091CC7C9AA003133AD /* WWDCTimeline.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB6221F1CC5E5770094C945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB622281CC5E5770094C945 /* GameView.swift in Sources */,
+				BFB622391CC5E65A0094C945 /* WWDCMainScene.swift in Sources */,
+				BFB6222A1CC5E5770094C945 /* GameViewController.swift in Sources */,
+				BF99BB0D1CC7CA3A003133AD /* WWDCColor.swift in Sources */,
+				BFB622261CC5E5770094C945 /* AppDelegate.swift in Sources */,
+				BF2AF29E1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */,
+				BF99BB0C1CC7CA3A003133AD /* WWDCTimeline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +271,14 @@
 				BFB622161CC5E55D0094C945 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BFB6222F1CC5E5770094C945 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFB622301CC5E5770094C945 /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -273,10 +391,40 @@
 			};
 			name = Release;
 		};
+		BFB622341CC5E5770094C945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = WWDC16macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.WWDC16macOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BFB622351CC5E5770094C945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = WWDC16macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathanflurry.WWDC16macOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BFB622021CC5E55D0094C945 /* Build configuration list for PBXProject "WWDC16iOS" */ = {
+		BFB622021CC5E55D0094C945 /* Build configuration list for PBXProject "WWDC16" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFB622191CC5E55D0094C945 /* Debug */,
@@ -292,6 +440,16 @@
 				BFB6221D1CC5E55D0094C945 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFB622331CC5E5770094C945 /* Build configuration list for PBXNativeTarget "WWDC16macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFB622341CC5E5770094C945 /* Debug */,
+				BFB622351CC5E5770094C945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

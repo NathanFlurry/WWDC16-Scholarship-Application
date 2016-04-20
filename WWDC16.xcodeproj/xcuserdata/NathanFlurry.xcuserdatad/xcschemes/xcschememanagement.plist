@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WWDC16macOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>BFB622061CC5E55D0094C945</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFB622221CC5E5770094C945</key>
 		<dict>
 			<key>primary</key>
 			<true/>
