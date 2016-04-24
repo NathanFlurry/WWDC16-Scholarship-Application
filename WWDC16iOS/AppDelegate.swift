@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate { // MARK: iOS not supported since SCNVector3 uses CGFloats on OS X and Floats on iOS 
 
     var window: UIWindow?
 

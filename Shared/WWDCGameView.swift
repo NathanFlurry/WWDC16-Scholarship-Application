@@ -43,6 +43,17 @@ class WWDCGameView : SCNView {
     #endif
     
     private func setup() {
+        // DEBUG: Print out all the fonts
+        #if os(iOS)
+        _ = UIFont.familyNames().map {
+            print("\($0): \(UIFont.fontNamesForFamilyName($0))")
+        }
+        #elseif os(OSX)
+        _ = AppKit.NSFontManager.sharedFontManager().availableFontFamilies.map {
+            Swift.print("\($0): \(NSFontManager.sharedFontManager().availableMembersOfFontFamily($0)!)")
+        }
+        #endif
+        
         // Create a new scene
         mainScene = WWDCMainScene(sceneView: self)
         

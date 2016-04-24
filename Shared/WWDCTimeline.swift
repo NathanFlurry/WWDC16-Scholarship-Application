@@ -109,12 +109,12 @@ class WWDCTimeline : SCNNode {
     private func generateDate(date: WWDCDate, isYear: Bool) -> SCNNode {
         // Create the text
         let dateText = SCNText(string: isYear ? "\(date.year)" : WWDCTimeline.months[date.month], extrusionDepth: 1)
-        dateText.font = NSFont.systemFontOfSize(textSize, weight: isYear ? 1 : 0)
+        dateText.font = WWDCFont.systemFontOfSize(textSize, weight: isYear ? 1 : 0)
         dateText.flatness = 0
         
         // Create the date node
         let dateNode = SCNNode(geometry: dateText)
-        dateNode.position = positionForDate(date) + SCNVector3(x: 0, y: isYear ? textSize * 1.5 : 0, z: 0) // Move up if is a year marker
+        dateNode.position = positionForDate(date) + SCNVector3(x: 0, y: isYear ? textSize * 1.5 : 0.0, z: 0) // Move up if is a year marker
         dateNode.eulerAngles = SCNVector3(0, isYear ? M_PI * 0.4 : M_PI * 0.6, 0) // Turn the date slightly
         
         // Add the node

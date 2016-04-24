@@ -39,35 +39,21 @@ class WWDCMainScene : SCNScene {
                     try WWDCMarker(date: WWDCDate(month: 6, year: 2012), sceneName: "TestMarker"),
                     
                     WWDCEvent(
-                        title: "More events",
                         date: WWDCDate(month: 7, year: 2012),
-                        bullets: [
-                            .Text("More text")
-                        ],
+                        title: "More events",
+                        text: "Just some text over here, trying to reach the wrap limit.\nThis might be a bit long, but whatever.",
                         customHandler: nil
                     ),
                     WWDCEvent(
-                        title: "This is the title",
                         date: WWDCDate(month: 3, year: 2013),
-                        bullets: [
-                            .Text("Some text"),
-                            .Indent([
-                                    .Text("Some other text"),
-                                    .Text("More text")
-                                ]
-                            ),
-                            .Text("Outdented text"),
-                            .Text("More outdented text"),
-                            .Text("Text that should span over many lines because it's a long string and should wrap around")
-                        ],
+                        title: "This is the title",
+                        text: "Here is some semi-long text in here with some stuff and\nthis is a new line\njust\nfor\nfun",
                         customHandler: nil
                     ),
                     WWDCEvent(
-                        title: "Another title",
                         date: WWDCDate(month: 11, year: 2015),
-                        bullets: [
-                            .Text("More text")
-                        ],
+                        title: "Another title",
+                        text: "Yayayayayayayayayayayayayaya cool stuff WWDC yeah\nmhmm",
                         customHandler: nil
                     )
                 ]

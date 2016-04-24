@@ -8,10 +8,6 @@
 
 import SceneKit
 
-enum WWDCEventBullet {
-    case Text(String), Indent([WWDCEventBullet])
-}
-
 protocol WWDCEventHandler {
     // Handlers for when the slide became active and inactive
     func becameActive()
@@ -22,38 +18,35 @@ protocol WWDCEventHandler {
 }
 
 class WWDCEvent : WWDCTimelineItem {
-    private static let bulletString = " • "
-    
     // Position of the slide
     static let positionOffset = SCNVector3(-10, 0, 0)
     
     // Sizing of the slide
     static let absoluteSize = CGSize(width: 1920, height: 1200)
-    static let slideScale: CGFloat = 1 / 200
+    static let slideScale: CGFloat = 1 / 100
     static var slideSize: CGSize {
         return CGSize(width: absoluteSize.width * slideScale, height: absoluteSize.height * slideScale)
     }
     
     // Title metrics
-    static let titleFont = "Source Sans Pro Bold"
+    static let titleFont = "SourceSansPro-Bold"
     static let titleSize: CGFloat = 110
-    static let titlePosition = SCNVector3(-910, 435, 100)
+    static let titlePosition = SCNVector3(-910, 435, 0)
     
     // Bullet metrics
-    static let bulletFont = "Source Sans Pro Semibold"
-    static let bulletSize: CGFloat = 95
-    static let bulletPosition = SCNVector3(-910, 300, 100)
-    static let bulletLineHeight: CGFloat = 190
-    static let bulletIndentSize: CGFloat = 90
+    static let textFont = "SourceSansPro-Regular"
+    static let textSize: CGFloat = 95
+    static let textPadding: CGFloat = 40 // Against the bottom of the title
+    static let textWidth: CGFloat = 1000
     
     // Parameters
     var title: String // The title of the slide
-    var bullets: [WWDCEventBullet] // Bullets within the slide
+    var text: String
     var customHandler: WWDCEventHandler.Type? // A custom handler that will be initiated
     
-    init(title: String, date: WWDCDate, bullets: [WWDCEventBullet], customHandler: WWDCEventHandler.Type?) {
+    init(date: WWDCDate, title: String, text: String, customHandler: WWDCEventHandler.Type?) {
         self.title = title
-        self.bullets = bullets
+        self.text = text
         self.customHandler = customHandler
         
         super.init()
@@ -64,56 +57,54 @@ class WWDCEvent : WWDCTimelineItem {
         let plane = SCNPlane(width: WWDCEvent.slideSize.width, height: WWDCEvent.slideSize.height)
         plane.cornerRadius = 0.5
         let planeNode = SCNNode(geometry: plane)
-        planeNode.position.z = -3
+        planeNode.position.z = -0.01
         plane.firstMaterial?.diffuse.contents = WWDCColor(white: 0.1, alpha: 1.0)
         addChildNode(planeNode)
         
         // Add the title
+        addText(
+            title,
+            fontName: WWDCEvent.titleFont,
+            size: WWDCEvent.titleSize,
+            position: WWDCEvent.titlePosition
+        )
         
-        // Add the bullets
-        addBullets(bullets)
+        // Add the text
+        addText(
+            text,
+            fontName: WWDCEvent.textFont,
+            size: WWDCEvent.textSize,
+            position: SCNVector3(WWDCEvent.titlePosition.x, -WWDCEvent.absoluteSize.height / 2, 0),
+            depth: 0,
+            alignment: kCAAlignmentLeft,
+            containerFrame: CGRect(
+                x: 0,
+                y: 0,
+                width: WWDCEvent.textWidth,
+                height: WWDCEvent.absoluteSize.height / 2 + WWDCEvent.titlePosition.y - WWDCEvent.textPadding
+            )
+        )
         
         // Position the event
         position = WWDCEvent.positionOffset
     }
     
-    private func addBullets(bullets: [WWDCEventBullet], index i: Int = 0, indentationLevel: Int = 0) {
-        var index = i
-        for bullet in bullets {
-            // Deal with the bullet
-            switch bullet {
-            case .Text(let title):
-                addBullet(title, index: index, indentationLevel: indentationLevel)
-            case .Indent(let childBullets):
-                addBullets(childBullets, index: index, indentationLevel: indentationLevel + 1)
-            }
-            
-            // Increment the index
-            index += 1
-        }
-    }
-    
-    private func addBullet(text: String, index: Int, indentationLevel: Int) {
-        addText(
-            text,
-            fontName: WWDCEvent.bulletFont,
-            size: WWDCEvent.bulletSize,
-            position: WWDCEvent.bulletPosition + SCNVector3(
-                WWDCEvent.bulletIndentSize * CGFloat(indentationLevel),
-                -WWDCEvent.bulletLineHeight * CGFloat(index),
-                0
-            )
-        )
-    }
-    
     private func addText(text: String, fontName: String, size: CGFloat, position: SCNVector3, depth: CGFloat = 0, alignment: String = kCAAlignmentLeft, containerFrame: CGRect? = nil) {
         // Create the text geometry
         let text = SCNText(string: text, extrusionDepth: depth)
-        text.font = Font(name: fontName, size: size * WWDCEvent.slideScale)
+        text.font = WWDCFont(name: fontName, size: size * WWDCEvent.slideScale)
+        text.flatness = 0
         text.alignmentMode = alignment
+        
         if let frame = containerFrame {
-            text.containerFrame = frame
+            text.containerFrame = CGRect(
+                x: frame.origin.x * WWDCEvent.slideScale,
+                y: frame.origin.y * WWDCEvent.slideScale,
+                width: frame.width * WWDCEvent.slideScale,
+                height: frame.height * WWDCEvent.slideScale
+            )
             text.wrapped = true
+            text.truncationMode = kCATruncationNone
         }
         
         // Create the node

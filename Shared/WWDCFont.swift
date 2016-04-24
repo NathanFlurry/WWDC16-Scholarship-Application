@@ -8,8 +8,8 @@
 
 #if os(iOS)
 import UIKit
-typealias Font = UIFont
+typealias WWDCFont = UIFont
 #elseif os(OSX)
 import AppKit
-typealias Font = NSFont
+typealias WWDCFont = NSFont
 #endif

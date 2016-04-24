@@ -9,6 +9,7 @@
 import CoreGraphics
 
 extension CGFloat {
+    static let zero = 0
     static let pi = CGFloat(M_PI)
     
     static func random() -> CGFloat {
