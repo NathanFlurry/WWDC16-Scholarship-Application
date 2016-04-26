@@ -11,6 +11,8 @@ import SceneKit
 class WWDCGameView : SCNView {
     static var singleton : WWDCGameView!
     
+    let printFonts = false
+    
     var mainScene: WWDCMainScene? {
         get {
             return scene as? WWDCMainScene
@@ -44,15 +46,17 @@ class WWDCGameView : SCNView {
     
     private func setup() {
         // DEBUG: Print out all the fonts
-        #if os(iOS)
-        _ = UIFont.familyNames().map {
-            print("\($0): \(UIFont.fontNamesForFamilyName($0))")
+        if printFonts {
+            #if os(iOS)
+            _ = UIFont.familyNames().map {
+                print("\($0): \(UIFont.fontNamesForFamilyName($0))")
+            }
+            #elseif os(OSX)
+            _ = AppKit.NSFontManager.sharedFontManager().availableFontFamilies.map {
+                Swift.print("\($0): \(NSFontManager.sharedFontManager().availableMembersOfFontFamily($0)!)")
+            }
+            #endif
         }
-        #elseif os(OSX)
-        _ = AppKit.NSFontManager.sharedFontManager().availableFontFamilies.map {
-            Swift.print("\($0): \(NSFontManager.sharedFontManager().availableMembersOfFontFamily($0)!)")
-        }
-        #endif
         
         // Create a new scene
         mainScene = WWDCMainScene(sceneView: self)
@@ -63,8 +67,11 @@ class WWDCGameView : SCNView {
         // Show statistics such as fps and timing information
         showsStatistics = true
         
+        // Enable jittering
+        jitteringEnabled = true
+        
         // Configure the view
-        backgroundColor = WWDCColor.blackColor()
+        backgroundColor = mainScene!.bgColor
     }
     
     private func appeared() {

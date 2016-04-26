@@ -12,37 +12,20 @@ class WWDCFloor : SCNNode {
     // Nodes
     private let floor: SCNFloor
     
-    // Parameters
-//    var color: CGColor? {
-//        get {
-//            return floor.firstMaterial?.diffuse.contents
-//        }
-//        set {
-//            floor.firstMaterial?.diffuse.contents = newValue
-//        }
-//    }
-    var falloffStart: CGFloat {
-        get {
-            return floor.reflectionFalloffStart
-        }
-        set {
-            floor.reflectionFalloffStart = newValue
-        }
-    }
-    var falloffEnd: CGFloat {
-        get {
-            return floor.reflectionFalloffEnd
-        }
-        set {
-            floor.reflectionFalloffStart = newValue
-        }
-    }
-    
     override init() {
         // Create the floor
         floor = SCNFloor()
         floor.reflectionFalloffStart = 0
         floor.reflectionFalloffEnd = 15
+        
+        let floorMaterial = floor.firstMaterial!
+//        floorMaterial.diffuse.contents = "Floor.jpg"
+        floorMaterial.diffuse.contents = WWDCColors.charade
+        floorMaterial.locksAmbientWithDiffuse = true
+        floorMaterial.normal.contents = "NormalMap.png"
+        floorMaterial.normal.intensity = 0.5
+        floor.firstMaterial = floorMaterial
+        
         
         super.init()
         

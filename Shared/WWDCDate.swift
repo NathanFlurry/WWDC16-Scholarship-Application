@@ -9,11 +9,11 @@
 import Foundation
 
 // MARK: Comparison operators
-func < (lhs: WWDCDate, rhs: WWDCDate) -> Bool{
+func < (lhs: WWDCDate, rhs: WWDCDate) -> Bool {
     return lhs.absoluteMonth < rhs.absoluteMonth
 }
 
-func <= (lhs: WWDCDate, rhs: WWDCDate) -> Bool{
+func <= (lhs: WWDCDate, rhs: WWDCDate) -> Bool {
     return lhs.absoluteMonth <= rhs.absoluteMonth
 }
 
@@ -21,11 +21,11 @@ func > (lhs: WWDCDate, rhs: WWDCDate) -> Bool{
     return lhs.absoluteMonth > rhs.absoluteMonth
 }
 
-func >= (lhs: WWDCDate, rhs: WWDCDate) -> Bool{
+func >= (lhs: WWDCDate, rhs: WWDCDate) -> Bool {
     return lhs.absoluteMonth >= rhs.absoluteMonth
 }
 
-func == (lhs: WWDCDate, rhs: WWDCDate) -> Bool{
+func == (lhs: WWDCDate, rhs: WWDCDate) -> Bool {
     return lhs.absoluteMonth == rhs.absoluteMonth
 }
 
@@ -47,16 +47,26 @@ func - (lhs: WWDCDate, rhs: Int) -> WWDCDate {
 }
 
 // MARK: Structure
-struct WWDCDate {
+struct WWDCDate : CustomStringConvertible {
+    static let months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
+    
     static var min = WWDCDate(month: 0, year: Int.min)
     static var max = WWDCDate(month: 11, year: Int.max)
     
     var month: Int // 0-11
     var year: Int
     
+    var description: String {
+        return "\(WWDCDate.months[month]) \(year)"
+    }
+    
     init(month: Int, year: Int) {
         self.month = month % 12
         self.year = year
+    }
+    
+    init(properMonth: Int, year: Int) {
+        self.init(month: properMonth - 1, year: year)
     }
     
     init(absoluteMonth: Int) {

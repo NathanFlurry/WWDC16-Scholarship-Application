@@ -10,9 +10,11 @@ import SceneKit
 
 class WWDCMarker : WWDCTimelineItem {
     var sceneName: String
+    var ext: String
     
-    init(date: WWDCDate, sceneName: String) throws {
+    init(date: WWDCDate, sceneName: String, withExtension ext: String = "dae") throws {
         self.sceneName = sceneName
+        self.ext = ext
         
         super.init()
         
@@ -36,7 +38,7 @@ class WWDCMarker : WWDCTimelineItem {
     func loadScene() throws -> SCNScene {
         do {
             // Get the path
-            let path = NSBundle.mainBundle().URLForResource("SceneAssets.scnassets/" + sceneName, withExtension: "scn")
+            let path = NSBundle.mainBundle().URLForResource("SceneAssets.scnassets/" + sceneName, withExtension: ext)
             if path == nil { throw NSError(domain: "", code: 0, userInfo: nil) } // TODO: Get proper errors
             
             // Get the scene source

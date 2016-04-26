@@ -11,7 +11,11 @@ import SceneKit
 // Inspired by WWDC '14 SceneKit session
 
 class WWDCMainScene : SCNScene {
+    static var singleton: WWDCMainScene?
+    
     let view: SCNView
+    
+    let bgColor = WWDCColors.charade
     
     private var currentSlide: Int = -1
     var slide: Int {
@@ -22,6 +26,8 @@ class WWDCMainScene : SCNScene {
     
     let floor: WWDCFloor
     let timeline: WWDCTimeline
+    
+    var lights = [SCNNode]()
     
     init(sceneView: SCNView) {
         // Save the view
@@ -34,48 +40,139 @@ class WWDCMainScene : SCNScene {
         do {
             timeline = WWDCTimeline(
                 timelineItems: [
-                    try WWDCMarker(date: WWDCDate(month: 4, year: 2012), sceneName: "TestMarker"),
-                    try WWDCMarker(date: WWDCDate(month: 5, year: 2012), sceneName: "TestMarker"),
-                    try WWDCMarker(date: WWDCDate(month: 6, year: 2012), sceneName: "TestMarker"),
+//                    try WWDCMarker(date: WWDCDate(month: 5, year: 2012), sceneName: "eMac"),
+//                    try WWDCMarker(date: WWDCDate(month: 6, year: 2012), sceneName: "iPodTouch"),
+//                    try WWDCMarker(date: WWDCDate(month: 7, year: 2012), sceneName: "MacMini"),
+//                    try WWDCMarker(date: WWDCDate(month: 8, year: 2012), sceneName: "iPad"),
+//                    try WWDCMarker(date: WWDCDate(month: 9, year: 2012), sceneName: "MacBookPro"),
+//                    try WWDCMarker(date: WWDCDate(month: 10, year: 2012), sceneName: "AppleTV"),
+                    
+                    // TODO: Add future
                     
                     WWDCEvent(
-                        date: WWDCDate(month: 7, year: 2012),
-                        title: "More events",
-                        text: "Just some text over here, trying to reach the wrap limit.\nThis might be a bit long, but whatever.",
-                        customHandler: nil
+                        date: WWDCDate(properMonth: 8, year: 2015),
+                        endDate: WWDCDate(properMonth: 5, year: 2016),
+                        title: "Aroid (WIP)",
+                        text: "Aroid is a massively multiplayer online game that I am currently working on. The players' goal is to fly their ship around and infinite, procedurally generated universe while shooting other ships and asteroids — essentially a multiplayer version of the original arcade game, Asteroids."
                     ),
                     WWDCEvent(
-                        date: WWDCDate(month: 3, year: 2013),
-                        title: "This is the title",
-                        text: "Here is some semi-long text in here with some stuff and\nthis is a new line\njust\nfor\nfun",
-                        customHandler: nil
+                        date: WWDCDate(properMonth: 5, year: 2015),
+                        endDate: WWDCDate(properMonth: 8, year: 2015),
+                        title: "Jubel",
+                        text: "Jubel was an iOS prototype for a consumer-friendly shopping platform that combines the social aspect of shopping with the convenience of online shopping."
                     ),
                     WWDCEvent(
-                        date: WWDCDate(month: 11, year: 2015),
-                        title: "Another title",
-                        text: "Yayayayayayayayayayayayayaya cool stuff WWDC yeah\nmhmm",
-                        customHandler: nil
-                    )
-                ]
+                        date: WWDCDate(properMonth: 7, year: 2015),
+                        title: "MonsterChomp",
+                        text: "MonsterChomp was a game developed for the forty-eight hour game development competition, Ludum Dare. In the game's cartoon post-apocalyptic world, the player is tasked with the duty of feeding hungry monsters. To do this, the player must launch whimsical carcasses into the air and into the monsters' mouths for them to gobble up. entry was peer-ranked within the top 20% among thousands of other entries."
+                    ),
+                    WWDCEvent(
+                        date: WWDCDate(properMonth: 7, year: 2015),
+                        title: "GrainTracker",
+                        text: "Grain Tracker was an iOS inventory application for food banks developed in thirty-six hours for the first Great Arizona <Code> Challenge. The application included the ability to quickly and easily add items to the inventory by scanning the barcode with the phone's camera, fetch the nutrition information of an item from the web or manually entered data, and instantly provide photos of the products from Google Images inline."
+                    ),
+                    WWDCEvent(
+                        date: WWDCDate(properMonth: 12, year: 2014),
+                        title: "CatchPhrase",
+                        text: "As a short project, I developed a small CatchPhrase clone with NodeJS and HTML5. With the game, players can each have their own individual mobile device and all play the game in which one player on each team must attempt to describe a word or phrase without using the word itself."
+                    ),
+                    WWDCEvent(
+                        date: WWDCDate(properMonth: 4, year: 2014),
+                        endDate: WWDCDate(properMonth: 4, year: 2015),
+                        title: "LaughItUp",
+                        text: "As a project to get aquatinted with server-side technologies, LaughItUp was a social network I developed that allowed users to consume and provide humorous content. While the project did gain some traction, I decided it did not have the market available to make it worthwhile to polish and release the app."
+                    ),
+                    WWDCEvent(
+                        date: WWDCDate(properMonth: 12, year: 2013),
+                        title: "KickAsteroids",
+                        text: "Developed for the Winter Codea Holiday Cook Off competition, I developed a game called KickAsteroids. The goal of the game is to defend your planet by dragging your finger around the screen to shatter the retro-looking asteroids."
+                    ),
+                    WWDCEvent(
+                        date: WWDCDate(properMonth: 12, year: 2013),
+                        title: "SnakeChase",
+                        text: "For the Ludum Dare forty-eight hour competition, I developed a game called SnakeChase. Playing as a snake, the player's goal is to navigate around an infinite world collecting as many moving blobs as possible. Each time the player eats a blob, the snake becomes longer. When one of these moving blobs touches the side of the player, the the snake is cut off at the point of impact and the player loses a \"life.\""
+                    ),
+                    WWDCEvent(
+                        date: WWDCDate(properMonth: 10, year: 2013),
+                        title: "StackIt",
+                        text: "In the game, StackIt, the player's goal is to move and tilt a paddle left and right to balance objects falling from the sky while not letting them fall off the paddle. Among many nifty features of the game, one is the dynamic background which reflects the current weather, moon phase, time of day, and special themes for holidays. The game ended up receiving fourteen thousand downloads total."
+                    ),
+                    WWDCEvent( // Starter slide
+                        date: WWDCDate(properMonth: 8, year: 2013),
+                        title: "",
+                        text: "",
+                        customHandler: WWDCStartScreenHandler()
+                    ),
+                ],
+                timelineSpline: WWDCSpline(
+                    points: {
+                        () -> [SCNVector3] in
+                        var arr = [SCNVector3]()
+                        for i in 0...8 {
+                            arr += [ SCNVector3(CGFloat.random() * 200 - 100, 0, -CGFloat(i) * 50) ]
+                        }
+                        return arr
+                    }(),
+                    method: .Cubic
+                )
             )
         } catch {
-            timeline = WWDCTimeline(timelineItems: [])
             print("Could not create timeline. \(error)")
+            timeline = WWDCTimeline(timelineItems: [], timelineSpline: WWDCSpline(points: [], method: .Linear))
         }
-        
+ 
         // Create the camera
         camera = WWDCCamera()
-        
+ 
         super.init()
         
+        // Set the singleon
+        WWDCMainScene.singleton = self
+        
+        // Add the fog
+        fogColor = WWDCColor.blackColor()
+        fogStartDistance = 10
+        fogEndDistance = 50
+        fogDensityExponent = 2
+        fogColor = bgColor
+        
+        // Add the lights
+        addLights()
+        
         // Add the nodes
-//        rootNode.addChildNode(floor)
+        rootNode.addChildNode(floor)
         rootNode.addChildNode(timeline)
         
         // Add the camera
         rootNode.addChildNode(camera)
-        transitionToIndex(0, animated: false)
+        transitionToIndex(0)
         sceneView.pointOfView = camera
+    }
+    
+    func addLights() {
+        // Front light
+//        let front = SCNNode()
+//        front.name = "Front"
+//        front.eulerAngles = SCNVector3(CGFloat.pi  * 0.1, 0, 0)
+//        front.light = SCNLight()
+//        front.light?.type = SCNLightTypeDirectional
+//        front.light?.color = WWDCColor.lightGrayColor()
+//        camera.addChildNode(front)
+        
+        // Spot light
+        let spot = SCNNode()
+        spot.name = "Spot"
+        spot.position = SCNVector3(15, 30, -7) // Slightly offset to make the shadows not look perfect
+        spot.light = SCNLight()
+        spot.light?.type = SCNLightTypeSpot
+        spot.light?.shadowRadius = 3
+        spot.light?.zNear = 20
+        spot.light?.zFar = 100
+        spot.light?.castsShadow = true
+        spot.light?.color = WWDCColor.lightGrayColor()
+        let lookConstraint = SCNLookAtConstraint(target: camera.focus)
+        spot.constraints = [ lookConstraint ]
+        camera.addChildNode(spot)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -86,25 +183,74 @@ class WWDCMainScene : SCNScene {
     private let dateSpacing: Float = 3
     private let dateSize: Float = 3
     
-    func transitionToIndex(index: Int, animated: Bool = true) {
+    func transitionToIndex(index: Int) {
         // Check the index is in range
         guard index < timeline.events.count && index >= 0 else {
             print("Slide index \(index) out of range.")
             return
         }
         
+        // Get the events
+        let nextEvent = timeline.events[index]
+        let previousEvent = timeline.events[safe: currentSlide] // Previous slide may not exist
+        
+        // Define the animation parameters
+        let method = WWDCTimingMethod.Quadratic
+        let mode = WWDCTimingMode.EaseInOut
+        var duration: NSTimeInterval = 1.8
+        var eventDuration: NSTimeInterval = 1.0
+        
+        // Change animation parameters if not moving the camera
+        if let prev = previousEvent where prev.date == nextEvent.date {
+            duration = 0.4
+            eventDuration = duration
+        }
+        
         // Transition the camera to the event
-        camera.transitionToEvent(timeline.events[index], animated: animated)
+        camera.transitionToEvent(nextEvent, duration: duration, method: method, mode: mode)
+        
+        // Transition the events
+        previousEvent?.fadeOut(duration, method: method, mode: mode)
+        nextEvent.fadeIn(duration - eventDuration, duration: eventDuration, method: method, mode: mode)
         
         // Save the index
         currentSlide = index
     }
     
-    func nextSlide(animated: Bool = true) {
-        transitionToIndex(slide + 1, animated: animated)
+    func nextSlide() {
+        transitionToIndex(slide + 1)
     }
     
-    func previousSlide(animated: Bool = true) {
-        transitionToIndex(slide - 1, animated: animated)
+    func previousSlide() {
+        transitionToIndex(slide - 1)
     }
+    
+//    private func testSpline() {
+//        let spline = WWDCSpline(points: [
+//                SCNVector3(0,0,0),
+//                SCNVector3(5,5,0),
+//                SCNVector3(10,0,0),
+//                SCNVector3(15,5,0),
+//                SCNVector3(10,10,0),
+//                SCNVector3(5,15,0),
+//                SCNVector3(0,10,0)
+//            ]
+//        )
+//
+//        let b = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+//        var t: CGFloat = 0.0
+//        while t <= 1 {
+//            let n = SCNNode(geometry: b)
+//            n.position = spline.evalutate(time: t, method: .Cubic)
+//            rootNode.addChildNode(n)
+//            t += 0.01
+//        }
+//
+//        let bb = SCNSphere(radius: 0.2)
+//        for p in spline.points {
+//            let n = SCNNode(geometry: bb)
+//            n.position = p
+//            rootNode.addChildNode(n)
+//        }
+//    }
 }

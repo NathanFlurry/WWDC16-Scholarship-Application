@@ -15,20 +15,8 @@ class WWDCTimelineItem : SCNNode { // Swift desprately needs abstract classes, p
 
 
 class WWDCTimeline : SCNNode {
-    private static let months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
-    
-    // Dates
-    let datesNode: SCNNode
-    let startDate: WWDCDate
-    let endDate: WWDCDate
-    let dateRangePadding = 4 // In months
-    let dateSpacing: CGFloat = 45
-    let textSize: CGFloat = 2
-    let dateHeight: CGFloat = 0.5
-    
-    // Items
-    let timelineItemsNode: SCNNode
-    let timelineItems: [WWDCTimelineItem]
+    // Spline in which to put everything on
+    let timelineSpline: WWDCSpline
     
     // Filtered items
     private var cachedEvents: [WWDCEvent]?
@@ -58,10 +46,11 @@ class WWDCTimeline : SCNNode {
 //        }
 //    }
     
-    init(timelineItems items: [WWDCTimelineItem]) {
+    init(timelineItems items: [WWDCTimelineItem], timelineSpline spline: WWDCSpline) {
         // Manage dates
         datesNode = SCNNode()
-        datesNode.position = SCNVector3(0, dateHeight, 0) // Move up by the date height
+        datesNode.position = SCNVector3(0, dateAltitude, 0) // Move up by the date height
+        timelineSpline = spline
         
         // Manage timeline
         timelineItemsNode = SCNNode()
@@ -79,56 +68,131 @@ class WWDCTimeline : SCNNode {
         
         super.init()
         
-        // Add the nodes
-        addChildNode(datesNode)
-        addChildNode(timelineItemsNode)
-        
         // Generate the dates
-        for year in startDate.year...endDate.year {
-            // Generate the year text
-            generateDate(WWDCDate(month: 0, year: year), isYear: true)
-            
-            for month in (year == startDate.year ? startDate.month : 0)...(year == endDate.year ? endDate.month : 11) {
-                // Generate the month text
-                generateDate(WWDCDate(month: month, year: year), isYear: false)
-            }
-        }
+        generateDates()
         
         // Generate the items
-        for item in timelineItems {
-            // Get the node
-            item.position = positionForDate(item.date) + item.position
-            timelineItemsNode.addChildNode(item)
-        }
+        generateItems()
+        
+        // Add the nodes
+        addChildNode(datesNode.flattenedClone())
+        addChildNode(timelineItemsNode) // Not flattened, since opacity and hidden-ness is modified at runtime
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func generateDate(date: WWDCDate, isYear: Bool) -> SCNNode {
-        // Create the text
-        let dateText = SCNText(string: isYear ? "\(date.year)" : WWDCTimeline.months[date.month], extrusionDepth: 1)
-        dateText.font = WWDCFont.systemFontOfSize(textSize, weight: isYear ? 1 : 0)
-        dateText.flatness = 0
+    // MARK: Dates
+    let datesNode: SCNNode // Node which all the dates are under
+    let startDate: WWDCDate // The starting date for all the date objects
+    let endDate: WWDCDate // The ending date
+    let dateRangePadding = 4 // Months around the first and last items that the dates should still be created
+    
+    let dateFontName = "SourceSansPro-Regular"
+    let dateYearFontName = "SourceSansPro-Bold"
+    let dateTextSize: CGFloat = 80 // Font side for dates
+    let dateScale: CGFloat = 0.02 // Scale for the date objects
+    var dateScaleVector: SCNVector3 { return SCNVector3(dateScale, dateScale, dateScale) }
+    let dateExtrusionDepth: CGFloat = 15 // Extrusion amount for the dates
+    let dateFlatness: CGFloat = 0.3 // Flatness for the dates
+    let dateChamfer: CGFloat = 2 // Chamfer for the dates
+    let dateAltitude: CGFloat = 0 // Height above the ground
+    
+    private func generateDates() {
+        // Get the fonts
+        let dateFont = WWDCFont(name: dateFontName, size: dateTextSize)
+        let yearFont = WWDCFont(name: dateYearFontName, size: dateTextSize)
         
-        // Create the date node
-        let dateNode = SCNNode(geometry: dateText)
-        dateNode.position = positionForDate(date) + SCNVector3(x: 0, y: isYear ? textSize * 1.5 : 0.0, z: 0) // Move up if is a year marker
-        dateNode.eulerAngles = SCNVector3(0, isYear ? M_PI * 0.4 : M_PI * 0.6, 0) // Turn the date slightly
+        // Make the base date
+        let dateBase = SCNText(string: "", extrusionDepth: dateExtrusionDepth)
+        dateBase.font = dateFont
+        dateBase.flatness = dateFlatness
+        dateBase.chamferProfile = straightChamferProfile
+        dateBase.chamferRadius = dateChamfer
         
-        // Add the node
-        datesNode.addChildNode(dateNode)
+        // Generate the materials
+        let frontMaterial = SCNMaterial()
+        let sideMaderial = SCNMaterial()
+        frontMaterial.diffuse.contents = WWDCColor.whiteColor()
+        frontMaterial.emission.contents = WWDCColor.lightGrayColor()
+        sideMaderial.diffuse.contents = WWDCColor.lightGrayColor()
+        dateBase.materials = [frontMaterial, frontMaterial, sideMaderial, frontMaterial, frontMaterial ]
         
-        // Return the node
-        return dateNode
+        // Generate the date geometries
+        var monthGeometries = [SCNText]()
+        for i in 0...11 {
+            do {
+                // FIXME: Calling SCNText.copy() throws an EXC_BAD_ACCESS exception unpredictably, sometimes when mutating the object, other times when copying
+                // FIXME: Calling SCNText.mutableCopy() gives SCNMutableGeometry, which I don't have access to and SCNText does not conform to
+                // Create the month text
+                let text = try dateBase.archiveCopy() // FIXME: Stop using archiveCopy()
+                text.string = WWDCDate.months[i]
+                
+                // Add to the geometries
+                monthGeometries += [ text ]
+            } catch {
+                print("Could not copy date base for month. \(error)")
+            }
+        }
+        
+        // Generate the dates
+        for year in startDate.year...endDate.year {
+            do {
+                // Generate the year text
+                let text = try dateBase.archiveCopy() // FIXME: Stop using archiveCopy()
+                text.string = "\(year)"
+                text.font = yearFont
+                
+                // Generate the year node
+                let yearNode = SCNNode(geometry: text)
+                yearNode.position = positionForDate(WWDCDate(month: 0, year: year)) + SCNVector3(0, dateTextSize * dateScale * 1.2, 0)
+                yearNode.eulerAngles = rotationForDate(WWDCDate(month: 0, year: year)) + SCNVector3(0, -M_PI / 4, 0)
+                yearNode.scale = dateScaleVector
+                datesNode.addChildNode(yearNode)
+            } catch {
+                print(" Could not copy date base for year. \(error)")
+            }
+            
+            for month in (year == startDate.year ? startDate.month : 0)...(year == endDate.year ? endDate.month : 11) {
+                // Generate the month node
+                let monthNode = SCNNode(geometry: monthGeometries[month])
+                monthNode.position = positionForDate(WWDCDate(month: month, year: year))
+                monthNode.eulerAngles = rotationForDate(WWDCDate(month: month, year: year))
+                monthNode.scale = dateScaleVector
+                datesNode.addChildNode(monthNode)
+            }
+        }
     }
     
-    func distanceForDate(date: WWDCDate) -> CGFloat { // Returns the distance in the world space that a date should be moved in the x direction
-        return CGFloat((date.year - startDate.year) * 12 + date.month) * dateSpacing
+    // MARK: Events and markers
+    let timelineItemsNode: SCNNode
+    let timelineItems: [WWDCTimelineItem]
+    
+    private func generateItems() {
+        // Generate the items
+        for item in timelineItems {
+            // Get the node
+            item.position = positionForDate(item.date) + item.position
+            item.eulerAngles = rotationForDate(item.date) + item.eulerAngles
+            timelineItemsNode.addChildNode(item)
+        }
+    }
+    
+    // MARK: Positioning
+    func splineTimeForDate(date: WWDCDate) -> CGFloat {
+        return CGFloat(date.absoluteMonth - startDate.absoluteMonth) / CGFloat(endDate.absoluteMonth - startDate.absoluteMonth)
+    }
+    
+    func positionForTime(t: CGFloat) -> SCNVector3 {
+        return timelineSpline.evalutate(time: t)
     }
     
     func positionForDate(date: WWDCDate) -> SCNVector3 {
-        return SCNVector3(0, 0, -distanceForDate(date))
+        return positionForTime(splineTimeForDate(date))
+    }
+    
+    func rotationForDate(date: WWDCDate) -> SCNVector3 {
+        return timelineSpline.evaluateRotation(time: splineTimeForDate(date), axis: .Y) + SCNVector3(0, CGFloat.pi, 0)
     }
 }

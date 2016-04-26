@@ -15,5 +15,17 @@ extension CGFloat {
     static func random() -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX)
     }
+    
+    // Linearly interpolates between to values
+    static func lerp(start: CGFloat, end: CGFloat, interpolation: CGFloat) -> CGFloat {
+        return start * (1 - interpolation) + end * interpolation
+    }
+    
+    // Spherically interpolates between two angles (radians)
+    static func slerp(start: CGFloat, end: CGFloat, interpolation: CGFloat) -> CGFloat {
+        let cs = (1 - interpolation) * cos(start) + interpolation * cos(end)
+        let sn = (1 - interpolation) * sin(start) + interpolation * sin(end)
+        return atan2(sn, cs)
+    }
 }
 

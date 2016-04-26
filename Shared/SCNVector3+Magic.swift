@@ -8,31 +8,39 @@
 
 import SceneKit
 
-func + (lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
+func +(lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
     return SCNVector3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
 }
 
-func - (lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
+func -(lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
     return lhs + (-rhs)
 }
 
-func * (lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
+func *(lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
     return SCNVector3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z)
 }
 
-func * (lhs: SCNVector3, rhs: CGFloat) -> SCNVector3 {
+func *(lhs: SCNVector3, rhs: CGFloat) -> SCNVector3 {
     return SCNVector3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs)
 }
 
-func / (lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
+//func *(lhs: SCNVector3, rhs: Float) -> SCNVector3 {
+//    return lhs * CGFloat(rhs)
+//}
+
+func /(lhs: SCNVector3, rhs: SCNVector3) -> SCNVector3 {
     return SCNVector3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z)
 }
 
-func / (lhs: SCNVector3, rhs: CGFloat) -> SCNVector3 {
+func /(lhs: SCNVector3, rhs: CGFloat) -> SCNVector3 {
     return SCNVector3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs)
 }
 
-prefix func - (vector: SCNVector3) -> SCNVector3 {
+//func /(lhs: SCNVector3, rhs: Float) -> SCNVector3 {
+//    return lhs * CGFloat(rhs)
+//}
+
+prefix func -(vector: SCNVector3) -> SCNVector3 {
     return SCNVector3(-vector.x, -vector.y, -vector.z)
 }
 

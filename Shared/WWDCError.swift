@@ -8,9 +8,17 @@
 
 import Foundation
 
-class WWDCError : ErrorType {
+class WWDCError : ErrorType, CustomStringConvertible, CustomDebugStringConvertible {
     let message: String
     let attatchedError: ErrorType?
+    
+    var description: String {
+        return "\(message)"
+    }
+    
+    var debugDescription: String {
+        return "\(message)"
+    }
     
     init(message: String, attatchedError: ErrorType?) {
         self.message = message
