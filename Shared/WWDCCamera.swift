@@ -8,14 +8,21 @@
 
 import SceneKit
 
-class WWDCCamera : SCNNode {
+class WWDCCamera : SCNNode, WWDCTransformOffsetable {
     // Distance the camera stays from each slide
     let cameraDistance: CGFloat = 10
     
     // The focus, used for look at constraints
     let focus: SCNNode
     
-    var splineTime: CGFloat = 0
+    // Transform
+    var splineTime: CGFloat = 0 // Time along the spline
+    
+    // Transform offsetable implementation
+    var basePosition = SCNVector3()
+    var baseAngles = SCNVector3()
+    var positionOffset = SCNVector3()
+    var anglesOffset = SCNVector3()
     
     override init() {
         // Create the focus
@@ -49,11 +56,15 @@ class WWDCCamera : SCNNode {
         // Get the event position
         let startTime = splineTime
         let targetTime = WWDCMainScene.singleton!.timeline.splineTimeForDate(event.date)
-        let startRotation = eulerAngles
-        let targetRotation = event.eulerAngles
+        let startPositionOffset = positionOffset
+        let targetPositionOffset = event.positionOffset +
+            SCNVector3(0, 0, self.cameraDistance) // Offset by the camera offset to be able to see the slide
+        let startAnglesOffset = anglesOffset
+        let targetAnglesOffset = event.anglesOffset
+            
         
         // Focus on the event
-        camera?.focusFovOnSize(WWDCEvent.slideSize, distance: cameraDistance)
+        camera?.focusFovOnSize(event.slideSize, distance: cameraDistance)
         
         // Do the animation
         runAction(
@@ -61,18 +72,20 @@ class WWDCCamera : SCNNode {
                 (node, progress) in
                 // Interpolate the position
                 if let timeline = WWDCMainScene.singleton?.timeline {
-                    self.splineTime = CGFloat.lerp(startTime, end: targetTime, interpolation: progress) // Get the new time
-                    node.position = timeline.positionForTime(self.splineTime) + // Get the position on the path
-                        WWDCEvent.positionOffset + // Offset by the event position
-                        (self.orientation * SCNVector3(0, 0, self.cameraDistance)) // Offset by the camera offset (to look a bit far back at the slide)
+                    // Adjust the camera values
+                    self.splineTime = CGFloat.lerp(startTime, end: targetTime, interpolation: progress) // Offset time
+                    
+                    self.basePosition = timeline.positionForTime(self.splineTime) // Set base to the spline
+                    self.baseAngles = timeline.rotationForTime(self.splineTime) // Set base to the spline
+                    
+                    self.positionOffset = SCNVector3.lerp(startPositionOffset, end: targetPositionOffset, interpolation: progress)
+                    self.anglesOffset = SCNVector3.slerp(startAnglesOffset, end: targetAnglesOffset, interpolation: progress)
+                    
+                    // Commit the values
+                    self.commitTransform()
+                } else {
+                    print("Could not get the timeline for WWDCCamera transition.")
                 }
-                
-                // Spherically interpolate the angles
-                node.eulerAngles = SCNVector3(
-                    CGFloat.slerp(startRotation.x, end: targetRotation.x, interpolation: progress),
-                    CGFloat.slerp(startRotation.y, end: targetRotation.y, interpolation: progress),
-                    CGFloat.slerp(startRotation.z, end: targetRotation.z, interpolation: progress)
-                )
             }
         )
     }

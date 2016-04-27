@@ -25,9 +25,6 @@ protocol WWDCEventHandler : class {
 }
 
 class WWDCEvent : WWDCTimelineItem {
-    // Position of the slide
-    static let positionOffset = SCNVector3(-2, 5, 0)
-    
     // Dealing with hiding text and the date
     var hideTextAndDate: Bool = false {
         didSet {
@@ -37,31 +34,39 @@ class WWDCEvent : WWDCTimelineItem {
         }
     }
     
+    // Detecting when at the same date as another
+    let duplicateDatePositionOffset = SCNVector3(0, 1.5, -0.5)
+    var duplicateDatesBefore: Int = 0 {
+        didSet {
+            positionOffset = positionOffset + duplicateDatePositionOffset * CGFloat(duplicateDatesBefore)
+        }
+    }
+    
     // Sizing of the slide
-    static let absoluteSize = CGSize(width: 1920, height: 1200)
-    static let slideScale: CGFloat = 1 / 100
-    static var slideSize: CGSize {
+    let absoluteSize = CGSize(width: 1920, height: 1200)
+    let slideScale: CGFloat = 1 / 100
+    var slideSize: CGSize {
         return CGSize(width: absoluteSize.width * slideScale, height: absoluteSize.height * slideScale)
     }
-    static let textFlatness: CGFloat = 1
+    let textFlatness: CGFloat = 1
     
     // Title metrics
     var titleNode: SCNNode?
-    static let titleFont = "SourceSansPro-Bold"
-    static let titleSize: CGFloat = 110
-    static let titlePosition = SCNVector3(-910, 435, 0)
+    let titleFont = "SourceSansPro-Bold"
+    let titleSize: CGFloat = 110
+    let titlePosition = SCNVector3(-910, 435, 0)
     
     // Title date metrics
     var titleDateNode: SCNNode?
-    static let titleDateFont = "SourceSansPro-Light"
-    static let titleDatePadding: CGFloat = 20 // Against the right of the title
+    let titleDateFont = "SourceSansPro-Light"
+    let titleDatePadding: CGFloat = 20 // Against the right of the title
     
     // Text metrics
     var textNode: SCNNode?
-    static let textFont = "SourceSansPro-Regular"
-    static let textSize: CGFloat = 60
-    static let textPadding: CGFloat = 20 // Against the bottom of the title
-    static let textWidth: CGFloat = 1000
+    let textFont = "SourceSansPro-Regular"
+    let textSize: CGFloat = 60
+    let textPadding: CGFloat = 20 // Against the bottom of the title
+    let textWidth: CGFloat = 1000
     
     // Parameters
     var title: String // The title of the slide
@@ -81,9 +86,9 @@ class WWDCEvent : WWDCTimelineItem {
         // Add the title
         (titleNode, _) = addText(
             title,
-            fontName: WWDCEvent.titleFont,
-            size: WWDCEvent.titleSize,
-            position: WWDCEvent.titlePosition
+            fontName: titleFont,
+            size: titleSize,
+            position: titlePosition
         )
         
         // Add the title date
@@ -96,34 +101,35 @@ class WWDCEvent : WWDCTimelineItem {
             // Add the date
             (titleDateNode, _) = addText(
                 date.description + (endDate != nil ? " - \(endDate!.description)" : ""),
-                fontName: WWDCEvent.titleDateFont,
-                size: WWDCEvent.titleSize,
-                position: WWDCEvent.titlePosition + SCNVector3(v2.x - v1.x + WWDCEvent.titleDatePadding, 0, 0)
+                fontName: titleDateFont,
+                size: titleSize,
+                position: titlePosition + SCNVector3(v2.x - v1.x + titleDatePadding, 0, 0)
             )
         }
         
         // Add the text
         (textNode, _) = addText(
             text,
-            fontName: WWDCEvent.textFont,
-            size: WWDCEvent.textSize,
-            position: SCNVector3(WWDCEvent.titlePosition.x, -WWDCEvent.absoluteSize.height / 2, 0),
+            fontName: textFont,
+            size: textSize,
+            position: SCNVector3(titlePosition.x, -absoluteSize.height / 2, 0),
             depth: 0,
             alignment: kCAAlignmentLeft,
             containerFrame: CGRect(
                 x: 0,
                 y: 0,
-                width: WWDCEvent.textWidth,
-                height: WWDCEvent.absoluteSize.height / 2 + WWDCEvent.titlePosition.y - WWDCEvent.textPadding
+                width: textWidth,
+                height: absoluteSize.height / 2 + titlePosition.y - textPadding
             )
         )
         
-        // Position and scale the event
-        position = WWDCEvent.positionOffset
-        scale = SCNVector3(WWDCEvent.slideScale, WWDCEvent.slideScale, WWDCEvent.slideScale)
+        // Set the transforms
+        scale = SCNVector3(slideScale, slideScale, slideScale)
+        positionOffset = SCNVector3(-2, 5, 0)
         
         // Make transparent
         opacity = 0
+        hidden = true
         
         // Assign to event in the custom handler (this will add any children and such)
         customHandler?.event = self
@@ -137,11 +143,14 @@ class WWDCEvent : WWDCTimelineItem {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Transform management
+    
+    // MARK: Text management
     private func addText(text: String, fontName: String, size: CGFloat, position: SCNVector3, depth: CGFloat = 0, alignment: String = kCAAlignmentLeft, containerFrame: CGRect? = nil) -> (SCNNode?, SCNText) {
         // Create the text geometry
         let text = SCNText(string: text, extrusionDepth: depth)
         text.font = WWDCFont(name: fontName, size: size)
-        text.flatness = WWDCEvent.textFlatness
+        text.flatness = textFlatness
         text.alignmentMode = alignment
         
         // Set the container frame, if needed
@@ -169,6 +178,7 @@ class WWDCEvent : WWDCTimelineItem {
         return (textNode, text)
     }
     
+    // MARK: Transitions
     func fadeIn(delay: NSTimeInterval, duration: NSTimeInterval, method: WWDCTimingMethod, mode: WWDCTimingMode) {
         removeAllActions() // Remove previous actions
         let anim = SCNAction.fadeInWithDuration(duration) // Create the animation

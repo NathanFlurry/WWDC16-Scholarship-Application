@@ -15,11 +15,14 @@ class WWDCStartScreenHandler : WWDCEventHandler {
                 // Hide the other text
                 event.hideTextAndDate = true
                 
+                // Move event down
+                event.positionOffset.y -= 3
+                
                 // Add the node
                 var v1 = SCNVector3()
                 var v2 = SCNVector3()
                 titleNode.getBoundingBoxMin(&v1, max: &v2)
-                titleNode.position = titleNode.position - (v2 - v1) / 2
+                titleNode.position = titleNode.position - (v2 - v1) / 2 + SCNVector3(0, -150, 0)
                 event.addChildNode(titleNode)
             }
         }
@@ -41,8 +44,8 @@ class WWDCStartScreenHandler : WWDCEventHandler {
         
         // Get the colors for each individual letter
         let letterColors = [
-            WWDCColors.seaGreen, WWDCColors.jasper, WWDCColors.whiskey, WWDCColors.redViolet, // Letters
-            WWDCColors.pistachio, WWDCColors.pistachio // Numbers
+            WWDCColors.pistachio, WWDCColors.redViolet, WWDCColors.whiskey, WWDCColors.jasper, // Leters
+            WWDCColors.seaGreen, WWDCColors.seaGreen // Numbers
         ]
         
         // Create the title

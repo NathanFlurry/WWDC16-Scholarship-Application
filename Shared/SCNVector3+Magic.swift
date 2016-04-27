@@ -62,3 +62,19 @@ func * (quat: SCNQuaternion, vec: SCNVector3) -> SCNVector3 {
     let z = (num8 - num11) * vec.x + (num9 + num10) * vec.y + (1 - (num4 + num5)) * vec.z
     return SCNVector3(x, y, z)
 }
+
+extension SCNVector3 {
+    // Linearly interpolates between to values
+    static func lerp(start: SCNVector3, end: SCNVector3, interpolation: CGFloat) -> SCNVector3 {
+        return start * (1 - interpolation) + end * interpolation
+    }
+    
+    // Spherically interpolates between two angles (radians)
+    static func slerp(start: SCNVector3, end: SCNVector3, interpolation: CGFloat) -> SCNVector3 {
+        return SCNVector3(
+            CGFloat.slerp(start.x, end: end.x, interpolation: interpolation),
+            CGFloat.slerp(start.y, end: end.y, interpolation: interpolation),
+            CGFloat.slerp(start.z, end: end.z, interpolation: interpolation)
+        )
+    }
+}

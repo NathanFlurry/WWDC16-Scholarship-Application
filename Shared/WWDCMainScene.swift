@@ -131,9 +131,9 @@ class WWDCMainScene : SCNScene {
         
         // Add the fog
         fogColor = WWDCColor.blackColor()
-        fogStartDistance = 10
+        fogStartDistance = 15
         fogEndDistance = 50
-        fogDensityExponent = 2
+//        fogDensityExponent = 0.5
         fogColor = bgColor
         
         // Add the lights
@@ -202,7 +202,7 @@ class WWDCMainScene : SCNScene {
         
         // Change animation parameters if not moving the camera
         if let prev = previousEvent where prev.date == nextEvent.date {
-            duration = 0.4
+            duration = 0.6
             eventDuration = duration
         }
         

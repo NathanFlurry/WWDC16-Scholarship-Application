@@ -88,6 +88,8 @@
 		BFF4B8D81CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF4B8D61CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift */; };
 		BFF4B8DA1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF4B8D91CCD64A600C7E548 /* SCNAction+Magic.swift */; };
 		BFF4B8DB1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF4B8D91CCD64A600C7E548 /* SCNAction+Magic.swift */; };
+		BFFF05811CD0633400671A42 /* WWDCTransformOffsetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF05801CD0633400671A42 /* WWDCTransformOffsetable.swift */; };
+		BFFF05821CD0633400671A42 /* WWDCTransformOffsetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF05801CD0633400671A42 /* WWDCTransformOffsetable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -163,6 +165,7 @@
 		BFF4B8D31CCD542300C7E548 /* WWDCTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCTimingFunctions.swift; path = Shared/WWDCTimingFunctions.swift; sourceTree = "<group>"; };
 		BFF4B8D61CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WWDCTimingFunctions+Magic.swift"; path = "Shared/WWDCTimingFunctions+Magic.swift"; sourceTree = "<group>"; };
 		BFF4B8D91CCD64A600C7E548 /* SCNAction+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCNAction+Magic.swift"; path = "Shared/SCNAction+Magic.swift"; sourceTree = "<group>"; };
+		BFFF05801CD0633400671A42 /* WWDCTransformOffsetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCTransformOffsetable.swift; path = Shared/WWDCTransformOffsetable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,7 @@
 				BF58DAB11CCC9FC70036C5D0 /* WWDCSpline.swift */,
 				BFF4B8D31CCD542300C7E548 /* WWDCTimingFunctions.swift */,
 				BFDCCF711CCF069500EB894F /* WWDCColors.swift */,
+				BFFF05801CD0633400671A42 /* WWDCTransformOffsetable.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -441,6 +445,7 @@
 				BFF4B8DA1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */,
 				BFF4B8D71CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift in Sources */,
 				BF58DAB21CCC9FC70036C5D0 /* WWDCSpline.swift in Sources */,
+				BFFF05811CD0633400671A42 /* WWDCTransformOffsetable.swift in Sources */,
 				BF4D45B21CCC19EF007DEA9A /* SCNVector3+Magic.swift in Sources */,
 				BF4D45C91CCC4BCC007DEA9A /* WWDCFont.swift in Sources */,
 				BF99BB091CC7C9AA003133AD /* WWDCTimeline.swift in Sources */,
@@ -472,6 +477,7 @@
 				BFF4B8DB1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */,
 				BFF4B8D81CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift in Sources */,
 				BF58DAB31CCC9FC70036C5D0 /* WWDCSpline.swift in Sources */,
+				BFFF05821CD0633400671A42 /* WWDCTransformOffsetable.swift in Sources */,
 				BF4D45B41CCC1A14007DEA9A /* SCNVector3+Magic.swift in Sources */,
 				BF4D45CA1CCC4BCC007DEA9A /* WWDCFont.swift in Sources */,
 				BF99BB1B1CC841E0003133AD /* WWDCDate.swift in Sources */,

@@ -8,9 +8,31 @@
 
 import SceneKit
 
-class WWDCTimelineItem : SCNNode { // Swift desprately needs abstract classes, protocols don't cut it
+class WWDCTimelineItem : SCNNode, WWDCTransformOffsetable { // Swift desprately needs abstract classes, protocols don't cut it
     // The date the timeline item is at
     var date: WWDCDate = WWDCDate(absoluteMonth: 0)
+    
+    // The transform bases and offsets of the object
+    var basePosition = SCNVector3() {
+        didSet {
+            commitTransform()
+        }
+    }
+    var baseAngles = SCNVector3() {
+        didSet {
+            commitTransform()
+        }
+    }
+    var positionOffset = SCNVector3() {
+        didSet {
+            commitTransform()
+        }
+    }
+    var anglesOffset = SCNVector3() {
+        didSet {
+            commitTransform()
+        }
+    }
 }
 
 
@@ -170,11 +192,28 @@ class WWDCTimeline : SCNNode {
     let timelineItems: [WWDCTimelineItem]
     
     private func generateItems() {
+        // Keep track of previous dates
+        var previousDate = WWDCDate(absoluteMonth: 0)
+        var previousDateCount = 0
+        
         // Generate the items
         for item in timelineItems {
-            // Get the node
-            item.position = positionForDate(item.date) + item.position
-            item.eulerAngles = rotationForDate(item.date) + item.eulerAngles
+            // Set base positions
+            item.basePosition = positionForDate(item.date)
+            item.baseAngles = rotationForDate(item.date)
+            
+            // Register duplicate dates if an event
+            if let event = item as? WWDCEvent {
+                if event.date == previousDate { // Is a duplicate date, offset position and add to counter
+                    previousDateCount += 1
+                    event.duplicateDatesBefore = previousDateCount
+                } else { // Not a duplicate date, reset counter
+                    previousDate = event.date
+                    previousDateCount = 0
+                }
+            }
+            
+            // Add the node
             timelineItemsNode.addChildNode(item)
         }
     }
@@ -192,7 +231,11 @@ class WWDCTimeline : SCNNode {
         return positionForTime(splineTimeForDate(date))
     }
     
+    func rotationForTime(t: CGFloat) -> SCNVector3 {
+        return timelineSpline.evaluateRotation(time: t, axis: .Y) + SCNVector3(0, CGFloat.pi, 0)
+    }
+    
     func rotationForDate(date: WWDCDate) -> SCNVector3 {
-        return timelineSpline.evaluateRotation(time: splineTimeForDate(date), axis: .Y) + SCNVector3(0, CGFloat.pi, 0)
+        return rotationForTime(splineTimeForDate(date))
     }
 }
