@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BF0C8D761CD1B84D00DBAEF9 /* LaughItUp.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */; };
 		BF0C8D771CD1B84D00DBAEF9 /* LaughItUp.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */; };
+		BF0C8D791CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */; };
+		BF0C8D7A1CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */; };
 		BF27F0751CCEC93C00CB30B3 /* CollectionType+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27F0741CCEC93C00CB30B3 /* CollectionType+Magic.swift */; };
 		BF27F0761CCEC93C00CB30B3 /* CollectionType+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27F0741CCEC93C00CB30B3 /* CollectionType+Magic.swift */; };
 		BF2AF29D1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */; };
@@ -124,6 +126,7 @@
 
 /* Begin PBXFileReference section */
 		BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = LaughItUp.mp4; sourceTree = "<group>"; };
+		BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCNNode+Magic.swift"; path = "Shared/SCNNode+Magic.swift"; sourceTree = "<group>"; };
 		BF27F0741CCEC93C00CB30B3 /* CollectionType+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+Magic.swift"; path = "Shared/CollectionType+Magic.swift"; sourceTree = "<group>"; };
 		BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCFloor.swift; path = Shared/WWDCFloor.swift; sourceTree = "<group>"; };
 		BF4D45A71CCB088F007DEA9A /* SCNCamera+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCNCamera+Magic.swift"; path = "Shared/SCNCamera+Magic.swift"; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 				BF27F0741CCEC93C00CB30B3 /* CollectionType+Magic.swift */,
 				BFDCCF6E1CCED94300EB894F /* SCNGeometry+Magic.swift */,
 				BFDCCF741CCF22F200EB894F /* NSObject+Magic.swift */,
+				BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */,
 			);
 			name = Magic;
 			sourceTree = "<group>";
@@ -463,6 +467,7 @@
 				BF99BB081CC7C9AA003133AD /* WWDCColor.swift in Sources */,
 				BFB6220B1CC5E55D0094C945 /* AppDelegate.swift in Sources */,
 				BF4D45B71CCC1A3A007DEA9A /* WWDCCamera.swift in Sources */,
+				BF0C8D791CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */,
 				BF4D45A81CCB088F007DEA9A /* SCNCamera+Magic.swift in Sources */,
 				BF4D45AE1CCC1849007DEA9A /* CGFloat+Magic.swift in Sources */,
 				BFF4B8DA1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */,
@@ -497,6 +502,7 @@
 				BFB622261CC5E5770094C945 /* AppDelegate.swift in Sources */,
 				BF2AF29E1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */,
 				BF4D45B81CCC1A3A007DEA9A /* WWDCCamera.swift in Sources */,
+				BF0C8D7A1CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */,
 				BF4D45A91CCB08CE007DEA9A /* SCNCamera+Magic.swift in Sources */,
 				BF4D45AF1CCC1894007DEA9A /* CGFloat+Magic.swift in Sources */,
 				BFF4B8DB1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */,

@@ -169,10 +169,8 @@ class WWDCEvent : WWDCTimelineItem {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Transform management
-    
     // MARK: Text management
-    private func addText(text: String, fontName: String, size: CGFloat, position: SCNVector3, depth: CGFloat = 0, alignment: String = kCAAlignmentLeft, containerFrame: CGRect? = nil) -> (SCNNode?, SCNText) {
+    /*private*/ func addText(text: String, fontName: String, size: CGFloat, position: SCNVector3, depth: CGFloat = 0, alignment: String = kCAAlignmentLeft, containerFrame: CGRect? = nil, textColor: WWDCColor = WWDCColor.whiteColor()) -> (SCNNode?, SCNText) {
         // Create the text geometry
         let text = SCNText(string: text, extrusionDepth: depth)
         text.font = WWDCFont(name: fontName, size: size)
@@ -192,8 +190,8 @@ class WWDCEvent : WWDCTimelineItem {
         }
         
         // Set the material
-        text.firstMaterial?.diffuse.contents = WWDCColor.whiteColor()
-        text.firstMaterial?.emission.contents = WWDCColor.whiteColor()
+        text.firstMaterial?.diffuse.contents = textColor
+        text.firstMaterial?.emission.contents = textColor
         
         // Create the node
         let textNode = SCNNode(geometry: text)

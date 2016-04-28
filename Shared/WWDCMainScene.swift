@@ -113,7 +113,7 @@ class WWDCMainScene : SCNScene {
                         media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent( // Starter slide
-                        date: WWDCDate(properMonth: 8, year: 2013),
+                        date: WWDCDate(properMonth: 9, year: 2013),
                         title: "",
                         text: "",
                         customHandler: WWDCStartScreenHandler()
@@ -124,7 +124,7 @@ class WWDCMainScene : SCNScene {
                         () -> [SCNVector3] in
                         var arr = [SCNVector3]()
                         for i in 0...8 {
-                            arr += [ SCNVector3(CGFloat.random() * 200 - 100, 0, -CGFloat(i) * 50) ]
+                            arr += [ SCNVector3(CGFloat.random() * 200 - 100, 0, -CGFloat(i) * 75) ]
                         }
                         return arr
                     }(),
@@ -145,11 +145,11 @@ class WWDCMainScene : SCNScene {
         WWDCMainScene.singleton = self
         
         // Add the fog
-//        fogColor = WWDCColor.blackColor()
-//        fogStartDistance = 15
-//        fogEndDistance = 50
-////        fogDensityExponent = 0.5
-//        fogColor = bgColor
+        fogColor = WWDCColor.blackColor()
+        fogStartDistance = 15
+        fogEndDistance = 50
+//        fogDensityExponent = 0.5
+        fogColor = bgColor
         
         // Add the lights
         addLights()
@@ -160,8 +160,9 @@ class WWDCMainScene : SCNScene {
         
         // Add the camera
         rootNode.addChildNode(camera)
-        transitionToIndex(0)
-        sceneView.pointOfView = camera
+        camera.positionOffset = SCNVector3(0, 5, 50) // Set initial position of camera
+        transitionToIndex(0) // Move to first slide
+        sceneView.pointOfView = camera // Activate the camera
     }
     
     func addLights() {

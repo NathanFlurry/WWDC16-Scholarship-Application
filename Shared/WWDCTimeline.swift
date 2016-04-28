@@ -85,7 +85,7 @@ class WWDCTimeline : SCNNode {
             if item.date < minDate { minDate = item.date }
             if item.date > maxDate { maxDate = item.date }
         }
-        startDate = minDate - dateRangePadding
+        startDate = minDate // - dateRangePadding
         endDate = maxDate + dateRangePadding
         
         super.init()
@@ -109,7 +109,7 @@ class WWDCTimeline : SCNNode {
     let datesNode: SCNNode // Node which all the dates are under
     let startDate: WWDCDate // The starting date for all the date objects
     let endDate: WWDCDate // The ending date
-    let dateRangePadding = 0 // Months around the first and last items that the dates should still be created
+    let dateRangePadding = 6 // Months around the first and last items that the dates should still be created
     
     let dateFontName = "SourceSansPro-Regular"
     let dateYearFontName = "SourceSansPro-Bold"
@@ -161,17 +161,19 @@ class WWDCTimeline : SCNNode {
         // Generate the dates
         for year in startDate.year...endDate.year {
             do {
-                // Generate the year text
-                let text = try dateBase.archiveCopy() // FIXME: Stop using archiveCopy()
-                text.string = "\(year)"
-                text.font = yearFont
-                
-                // Generate the year node
-                let yearNode = SCNNode(geometry: text)
-                yearNode.position = positionForDate(WWDCDate(month: 0, year: year)) + SCNVector3(0, dateTextSize * dateScale * 1.2, 0)
-                yearNode.eulerAngles = rotationForDate(WWDCDate(month: 0, year: year)) + SCNVector3(0, -M_PI / 4, 0)
-                yearNode.scale = dateScaleVector
-                datesNode.addChildNode(yearNode)
+                if year != startDate.year && startDate.month != 0 { // Don't add on beginning
+                    // Generate the year text
+                    let text = try dateBase.archiveCopy() // FIXME: Stop using archiveCopy()
+                    text.string = "\(year)"
+                    text.font = yearFont
+                    
+                    // Generate the year node
+                    let yearNode = SCNNode(geometry: text)
+                    yearNode.position = positionForDate(WWDCDate(month: 0, year: year)) + SCNVector3(0, dateTextSize * dateScale * 1.2, 0)
+                    yearNode.eulerAngles = rotationForDate(WWDCDate(month: 0, year: year)) + SCNVector3(0, -M_PI / 4, 0)
+                    yearNode.scale = dateScaleVector
+                    datesNode.addChildNode(yearNode)
+                }
             } catch {
                 print(" Could not copy date base for year. \(error)")
             }

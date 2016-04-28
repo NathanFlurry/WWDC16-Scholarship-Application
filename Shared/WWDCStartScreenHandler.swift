@@ -17,20 +17,41 @@ class WWDCStartScreenHandler : WWDCEventHandler {
                 
                 // Move event down
                 event.positionOffset.y -= 3
-                event.positionOffset.z += 10
                 
-                // Add the node
-                var v1 = SCNVector3()
-                var v2 = SCNVector3()
-                titleNode.getBoundingBoxMin(&v1, max: &v2)
-                titleNode.position = titleNode.position - (v2 - v1) / 2 + SCNVector3(0, -150, 0)
+                // Set event backwards off timeline
+                event.positionOffset.z += 25
+                
+                // Add instructions
+                let (instructionsNode, _) = event.addText(
+                    "Press the ← and → keys to navigate",
+                    fontName: "SourceSansPro-Light",
+                    size: 60,
+                    position: SCNVector3(0, event.absoluteSize.height / 2 - 50, 0)
+                )
+                instructionsNode?.opacity = 0.5
+                instructionsNode?.center()
+                
+                // Add the applicant
+                let (applicantNode, _) = event.addText(
+                    "Applicant – Nathan Flurry",
+                    fontName: "SourceSansPro-Regular",
+                    size: 60,
+                    position: SCNVector3(0, -175, 250),
+                    alignment: kCAAlignmentCenter
+                )
+                applicantNode?.center()
+                
+                
+                // Add the title
+                titleNode.position = SCNVector3(0, -150, 0)
+                titleNode.center()
 //                titleNode.position = SCNVector3(0, -265, 0) // For angular spacing
                 event.addChildNode(titleNode)
             }
         }
     }
     
-    // Title
+    // WWDC Title
     let titleNode: SCNNode
     let titleFont = "Menlo-Bold"
     let titleFontSize = 300 as CGFloat // Automatically scaled by slide
