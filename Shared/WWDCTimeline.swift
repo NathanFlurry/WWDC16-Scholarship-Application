@@ -109,17 +109,17 @@ class WWDCTimeline : SCNNode {
     let datesNode: SCNNode // Node which all the dates are under
     let startDate: WWDCDate // The starting date for all the date objects
     let endDate: WWDCDate // The ending date
-    let dateRangePadding = 4 // Months around the first and last items that the dates should still be created
+    let dateRangePadding = 0 // Months around the first and last items that the dates should still be created
     
     let dateFontName = "SourceSansPro-Regular"
     let dateYearFontName = "SourceSansPro-Bold"
-    let dateTextSize: CGFloat = 80 // Font side for dates
-    let dateScale: CGFloat = 0.02 // Scale for the date objects
+    let dateTextSize = 80 as CGFloat // Font side for dates
+    let dateScale = 0.02 as CGFloat // Scale for the date objects
     var dateScaleVector: SCNVector3 { return SCNVector3(dateScale, dateScale, dateScale) }
-    let dateExtrusionDepth: CGFloat = 15 // Extrusion amount for the dates
-    let dateFlatness: CGFloat = 0.3 // Flatness for the dates
-    let dateChamfer: CGFloat = 2 // Chamfer for the dates
-    let dateAltitude: CGFloat = 0 // Height above the ground
+    let dateExtrusionDepth = 15 as CGFloat // Extrusion amount for the dates
+    let dateFlatness = 0.3 as CGFloat // Flatness for the dates
+    let dateChamfer = 2 as CGFloat // Chamfer for the dates
+    let dateAltitude = 0 as CGFloat // Height above the ground
     
     private func generateDates() {
         // Get the fonts

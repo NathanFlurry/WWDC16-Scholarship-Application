@@ -17,12 +17,14 @@ class WWDCStartScreenHandler : WWDCEventHandler {
                 
                 // Move event down
                 event.positionOffset.y -= 3
+                event.positionOffset.z += 10
                 
                 // Add the node
                 var v1 = SCNVector3()
                 var v2 = SCNVector3()
                 titleNode.getBoundingBoxMin(&v1, max: &v2)
                 titleNode.position = titleNode.position - (v2 - v1) / 2 + SCNVector3(0, -150, 0)
+//                titleNode.position = SCNVector3(0, -265, 0) // For angular spacing
                 event.addChildNode(titleNode)
             }
         }
@@ -31,9 +33,9 @@ class WWDCStartScreenHandler : WWDCEventHandler {
     // Title
     let titleNode: SCNNode
     let titleFont = "Menlo-Bold"
-    let titleFontSize: CGFloat = 300 // Automatically scaled by slide
-    let titleExtrusionDepth: CGFloat = 120
-    let titleChamfer: CGFloat = 10
+    let titleFontSize = 300 as CGFloat // Automatically scaled by slide
+    let titleExtrusionDepth = 120 as CGFloat
+    let titleChamfer = 10 as CGFloat
     var letterSpacing: CGFloat {
         return titleFontSize * 0.8
     }
@@ -52,6 +54,8 @@ class WWDCStartScreenHandler : WWDCEventHandler {
         titleNode = SCNNode()
         
         // Create the letters
+//        let angleRange = CGFloat.pi * 0.4 // For angular layout
+//        let circleSize = 1000 as CGFloat
         for (i, char) in str.characters.enumerate() {
             // Create the text
             let charText = SCNText()
@@ -74,6 +78,13 @@ class WWDCStartScreenHandler : WWDCEventHandler {
             // Create the node
             let charNode = SCNNode(geometry: charText)
             charNode.position = SCNVector3(CGFloat(i) * letterSpacing, 0, 0)
+            
+//            let angle = (CGFloat(i) / CGFloat(str.characters.count - 1)) * angleRange - angleRange / 2 // For angular spacing
+//            let positionAngle = angle - CGFloat.pi / 2
+//            charNode.position = SCNVector3(cos(positionAngle) * circleSize, 0, sin(positionAngle) * circleSize + circleSize)
+//            charNode.eulerAngles.y = -angle
+            
+            
             titleNode.addChildNode(charNode)
         }
     }

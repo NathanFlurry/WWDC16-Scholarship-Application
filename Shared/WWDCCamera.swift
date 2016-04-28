@@ -10,13 +10,13 @@ import SceneKit
 
 class WWDCCamera : SCNNode, WWDCTransformOffsetable {
     // Distance the camera stays from each slide
-    let cameraDistance: CGFloat = 10
+    let cameraDistance = 10 as CGFloat
     
     // The focus, used for look at constraints
     let focus: SCNNode
     
     // Transform
-    var splineTime: CGFloat = 0 // Time along the spline
+    var splineTime = 0 as CGFloat // Time along the spline
     
     // Transform offsetable implementation
     var basePosition = SCNVector3()

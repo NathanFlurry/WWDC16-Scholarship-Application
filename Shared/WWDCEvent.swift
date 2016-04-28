@@ -44,36 +44,51 @@ class WWDCEvent : WWDCTimelineItem {
     
     // Sizing of the slide
     let absoluteSize = CGSize(width: 1920, height: 1200)
-    let slideScale: CGFloat = 1 / 100
+    let slideScale = 1 / 100 as CGFloat
     var slideSize: CGSize {
         return CGSize(width: absoluteSize.width * slideScale, height: absoluteSize.height * slideScale)
     }
-    let textFlatness: CGFloat = 1
+    let textFlatness = 1 as CGFloat
     
     // Title metrics
     var titleNode: SCNNode?
     let titleFont = "SourceSansPro-Bold"
-    let titleSize: CGFloat = 110
+    let titleSize = 110 as CGFloat
     let titlePosition = SCNVector3(-910, 435, 0)
     
     // Title date metrics
     var titleDateNode: SCNNode?
     let titleDateFont = "SourceSansPro-Light"
-    let titleDatePadding: CGFloat = 20 // Against the right of the title
+    let titleDatePadding = 20 as CGFloat // Against the right of the title
     
     // Text metrics
     var textNode: SCNNode?
     let textFont = "SourceSansPro-Regular"
-    let textSize: CGFloat = 60
-    let textPadding: CGFloat = 20 // Against the bottom of the title
-    let textWidth: CGFloat = 1000
+    let textSize = 60 as CGFloat
+    let textPadding = 20 as CGFloat // Against the bottom of the title
+    let textWidth = 1000 as CGFloat
+    
+    // Display panel
+    var displayPanel: WWDCDisplayPanel?
+    var displayPanelNode: SCNNode?
+    let displayPanelSize = 600 as CGFloat
+    var displayPanelPosition: SCNVector3 {
+        return SCNVector3(
+            (absoluteSize.width / 2  + (titlePosition.x + textWidth)) / 2,
+            0, 0
+        )
+    }
+    var displayPanelScale: SCNVector3 { // Scales the display panel
+        let s = 1 / slideScale
+        return SCNVector3(s, s, s)
+    }
     
     // Parameters
     var title: String // The title of the slide
     var text: String
     var customHandler: WWDCEventHandler? // A custom handler that will be initiated
     
-    init(date: WWDCDate, endDate: WWDCDate?, title: String, text: String, customHandler: WWDCEventHandler? = nil) {
+    init(date: WWDCDate, endDate: WWDCDate? = nil, title: String, text: String, media: WWDCDisplayPanelContents? = nil, customHandler: WWDCEventHandler? = nil) {
         self.title = title
         self.text = text
         self.customHandler = customHandler
@@ -123,6 +138,21 @@ class WWDCEvent : WWDCTimelineItem {
             )
         )
         
+        // Add the media
+        if let media = media {
+            // Create the geometry
+            displayPanel = WWDCDisplayPanel(contents: media, size: displayPanelSize * slideScale)
+            displayPanel?.displayActive = false
+            
+            // Create the node
+            displayPanelNode = SCNNode(geometry: displayPanel)
+            displayPanelNode?.position = displayPanelPosition
+            displayPanelNode?.scale = displayPanelScale
+            
+            // Add it as a child
+            addChildNode(displayPanelNode!)
+        }
+        
         // Set the transforms
         scale = SCNVector3(slideScale, slideScale, slideScale)
         positionOffset = SCNVector3(-2, 5, 0)
@@ -133,10 +163,6 @@ class WWDCEvent : WWDCTimelineItem {
         
         // Assign to event in the custom handler (this will add any children and such)
         customHandler?.event = self
-    }
-    
-    convenience init(date: WWDCDate, title: String, text: String, customHandler: WWDCEventHandler? = nil) {
-        self.init(date: date, endDate: nil, title: title, text: text, customHandler: customHandler)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -184,6 +210,7 @@ class WWDCEvent : WWDCTimelineItem {
         let anim = SCNAction.fadeInWithDuration(duration) // Create the animation
         anim.timingFunction = SCNActionTimingMode.ease(method: method, mode: mode) // Set the timing mode
         hidden = false // Show the item
+        displayPanel?.displayActive = true // Activate the display panel
         runAction( // Run action with a delay
             SCNAction.sequence(
                 [
@@ -202,7 +229,10 @@ class WWDCEvent : WWDCTimelineItem {
             SCNAction.sequence(
                 [
                     anim,
-                    SCNAction.runBlock { $0.hidden = true }
+                    SCNAction.runBlock {
+                        $0.hidden = true // Hide the item
+                        self.displayPanel?.displayActive = false // Disable the display panel
+                    }
                 ]
             )
         )

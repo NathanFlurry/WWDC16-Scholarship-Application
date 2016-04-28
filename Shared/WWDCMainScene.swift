@@ -8,7 +8,14 @@
 
 import SceneKit
 
-// Inspired by WWDC '14 SceneKit session
+/*
+ Notes for readers:
+ - This was all programmed from beginning to finish in one and a half weeks
+ - This was inspired by the WWDC '14 SceneKit session, in case it looks mildly familiar
+ - I have never used SceneKit (only SpriteKit, both of which are amazing) before beginning this project
+ - Let's just say that writting proper Git commit changelogs was *not* my top priority ;)
+ - Finally, I appreciate you considering my application for a scholarship
+ */
 
 class WWDCMainScene : SCNScene {
     static var singleton: WWDCMainScene?
@@ -59,43 +66,51 @@ class WWDCMainScene : SCNScene {
                         date: WWDCDate(properMonth: 5, year: 2015),
                         endDate: WWDCDate(properMonth: 8, year: 2015),
                         title: "Jubel",
-                        text: "Jubel was an iOS prototype for a consumer-friendly shopping platform that combines the social aspect of shopping with the convenience of online shopping."
+                        text: "Jubel was an iOS prototype for a consumer-friendly shopping platform that combines the social aspect of shopping with the convenience of online shopping.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 7, year: 2015),
                         title: "MonsterChomp",
-                        text: "MonsterChomp was a game developed for the forty-eight hour game development competition, Ludum Dare. In the game's cartoon post-apocalyptic world, the player is tasked with the duty of feeding hungry monsters. To do this, the player must launch whimsical carcasses into the air and into the monsters' mouths for them to gobble up. entry was peer-ranked within the top 20% among thousands of other entries."
+                        text: "MonsterChomp was a game developed for the forty-eight hour game development competition, Ludum Dare. In the game's cartoon post-apocalyptic world, the player is tasked with the duty of feeding hungry monsters. To do this, the player must launch whimsical carcasses into the air and into the monsters' mouths for them to gobble up. entry was peer-ranked within the top 20% among thousands of other entries.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 7, year: 2015),
                         title: "GrainTracker",
-                        text: "Grain Tracker was an iOS inventory application for food banks developed in thirty-six hours for the first Great Arizona <Code> Challenge. The application included the ability to quickly and easily add items to the inventory by scanning the barcode with the phone's camera, fetch the nutrition information of an item from the web or manually entered data, and instantly provide photos of the products from Google Images inline."
+                        text: "Grain Tracker was an iOS inventory application for food banks developed in thirty-six hours for the first Great Arizona <Code> Challenge. The application included the ability to quickly and easily add items to the inventory by scanning the barcode with the phone's camera, fetch the nutrition information of an item from the web or manually entered data, and instantly provide photos of the products from Google Images inline.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 12, year: 2014),
                         title: "CatchPhrase",
-                        text: "As a short project, I developed a small CatchPhrase clone with NodeJS and HTML5. With the game, players can each have their own individual mobile device and all play the game in which one player on each team must attempt to describe a word or phrase without using the word itself."
+                        text: "As a short project, I developed a small CatchPhrase clone with NodeJS and HTML5. With the game, players can each have their own individual mobile device and all play the game in which one player on each team must attempt to describe a word or phrase without using the word itself.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 4, year: 2014),
                         endDate: WWDCDate(properMonth: 4, year: 2015),
                         title: "LaughItUp",
-                        text: "As a project to get aquatinted with server-side technologies, LaughItUp was a social network I developed that allowed users to consume and provide humorous content. While the project did gain some traction, I decided it did not have the market available to make it worthwhile to polish and release the app."
+                        text: "As a project to get aquatinted with server-side technologies, LaughItUp was a social network I developed that allowed users to consume and provide humorous content. While the project did gain some traction, I decided it did not have the market available to make it worthwhile to polish and release the app.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 12, year: 2013),
                         title: "KickAsteroids",
-                        text: "Developed for the Winter Codea Holiday Cook Off competition, I developed a game called KickAsteroids. The goal of the game is to defend your planet by dragging your finger around the screen to shatter the retro-looking asteroids."
+                        text: "Developed for the Winter Codea Holiday Cook Off competition, I developed a game called KickAsteroids. The goal of the game is to defend your planet by dragging your finger around the screen to shatter the retro-looking asteroids.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 12, year: 2013),
                         title: "SnakeChase",
-                        text: "For the Ludum Dare forty-eight hour competition, I developed a game called SnakeChase. Playing as a snake, the player's goal is to navigate around an infinite world collecting as many moving blobs as possible. Each time the player eats a blob, the snake becomes longer. When one of these moving blobs touches the side of the player, the the snake is cut off at the point of impact and the player loses a \"life.\""
+                        text: "For the Ludum Dare forty-eight hour competition, I developed a game called SnakeChase. Playing as a snake, the player's goal is to navigate around an infinite world collecting as many moving blobs as possible. Each time the player eats a blob, the snake becomes longer. When one of these moving blobs touches the side of the player, the the snake is cut off at the point of impact and the player loses a \"life.\"",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 10, year: 2013),
                         title: "StackIt",
-                        text: "In the game, StackIt, the player's goal is to move and tilt a paddle left and right to balance objects falling from the sky while not letting them fall off the paddle. Among many nifty features of the game, one is the dynamic background which reflects the current weather, moon phase, time of day, and special themes for holidays. The game ended up receiving fourteen thousand downloads total."
+                        text: "In the game, StackIt, the player's goal is to move and tilt a paddle left and right to balance objects falling from the sky while not letting them fall off the paddle. Among many nifty features of the game, one is the dynamic background which reflects the current weather, moon phase, time of day, and special themes for holidays. The game ended up receiving fourteen thousand downloads total.",
+                        media: .Video("LaughItUp", "mp4") // .Image("TestImage")
                     ),
                     WWDCEvent( // Starter slide
                         date: WWDCDate(properMonth: 8, year: 2013),
@@ -130,11 +145,11 @@ class WWDCMainScene : SCNScene {
         WWDCMainScene.singleton = self
         
         // Add the fog
-        fogColor = WWDCColor.blackColor()
-        fogStartDistance = 15
-        fogEndDistance = 50
-//        fogDensityExponent = 0.5
-        fogColor = bgColor
+//        fogColor = WWDCColor.blackColor()
+//        fogStartDistance = 15
+//        fogEndDistance = 50
+////        fogDensityExponent = 0.5
+//        fogColor = bgColor
         
         // Add the lights
         addLights()
@@ -252,5 +267,16 @@ class WWDCMainScene : SCNScene {
 //            n.position = p
 //            rootNode.addChildNode(n)
 //        }
+//    }
+    
+//    private func testDisplayPanel() {
+////        let geometry = WWDCDisplayPanel(contents: .Image("TestImage"), size: 5)
+//        let geometry = WWDCDisplayPanel(contents: .Video("LaughItUp", "mp4"), size: 5)
+//        
+//        let node = SCNNode(geometry: geometry)
+//        node.position = SCNVector3(0, 300, 0)
+//        let s = 1 / timeline.events[0].slideScale
+//        node.scale = SCNVector3(s, s, s)
+//        timeline.events[0].addChildNode(node)
 //    }
 }
