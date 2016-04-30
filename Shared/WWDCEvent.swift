@@ -142,6 +142,7 @@ class WWDCEvent : WWDCTimelineItem {
         if let media = media {
             // Create the geometry
             displayPanel = WWDCDisplayPanel(contents: media, size: displayPanelSize * slideScale)
+            displayPanel?.cornerPercentRadius = 0.02
             displayPanel?.displayActive = false
             
             // Create the node

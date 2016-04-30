@@ -4,14 +4,14 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2016-04-25T04:15:03Z</created>
-  <modified>2016-04-25T04:15:03Z</modified>
+  <created>2016-04-29T22:39:54Z</created>
+  <modified>2016-04-29T22:39:54Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Z_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>../ComputerModels.scnassets</init_from>
+   <init_from>gloss.png</init_from>
   </image>
  </library_images>
  <library_materials>
@@ -431,7 +431,7 @@
  <library_visual_scenes>
   <visual_scene id="scene21">
    <node id="eMac" name="eMac">
-    <matrix>2.563315 0.6157708 -1.431868 -5.815491 -8.940697e-08 2.755961 1.185193 2.858013 1.55866 -1.012674 2.354798 -3.643244 0 0 0 1 </matrix>
+    <matrix>1.222378 -0.3434523 0.7986358 -4.981768 6.705501e-08 1.37798 0.5925949 1.441263 -0.8693547 -0.4829196 1.122942 -2.771547 0 0 0 1 </matrix>
     <instance_geometry url="#Plane-mesh">
      <bind_material>
       <technique_common>
@@ -445,7 +445,7 @@
      </bind_material>
     </instance_geometry>
     <node id="Mouse" name="Mouse">
-     <matrix>0.1680955 0 0 1.083633 0 0.07538489 -0.06640857 -1.396966 0 0.03241909 0.1544215 0.7749233 0 0 0 1 </matrix>
+     <matrix>0.1680955 0 0 1.083633 0 0.07538489 -0.06640857 -1.331962 0 0.03241909 0.1544215 0.8028779 0 0 0 1 </matrix>
      <instance_geometry url="#Sphere_002-mesh">
       <bind_material>
        <technique_common>
@@ -467,7 +467,7 @@
      </instance_geometry>
     </node>
     <node id="Keyboard" name="Keyboard">
-     <matrix>0.8414988 0 0 -0.2379237 0 0.1447901 0.01073917 -1.445623 0 -0.3366839 0.004618351 0.8880668 0 0 0 1 </matrix>
+     <matrix>0.8414988 0 0 -0.2379243 0 0.1447901 0.01073917 -1.419446 0 -0.3366839 0.004618353 0.8993245 0 0 0 1 </matrix>
      <instance_geometry url="#Cube_006-mesh">
       <bind_material>
        <technique_common>

@@ -4,14 +4,14 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2016-04-25T04:15:25Z</created>
-  <modified>2016-04-25T04:15:25Z</modified>
+  <created>2016-04-29T19:44:37Z</created>
+  <modified>2016-04-29T19:44:37Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Z_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>../ComputerModels.scnassets</init_from>
+   <init_from>gloss.png</init_from>
   </image>
  </library_images>
  <library_materials>
@@ -569,7 +569,7 @@
  <library_visual_scenes>
   <visual_scene id="scene30">
    <node id="MacMini" name="MacMini">
-    <matrix>3.632076 -1.675716 -4.768372e-07 -5.397754 0 -9.536743e-07 4 -0.0562811 -1.675716 -3.632076 -9.536743e-07 -4.945649 0 0 0 1 </matrix>
+    <matrix>1.816038 -0.837858 -2.384186e-07 -5.397754 0 -4.768372e-07 2 -0.0562811 -0.837858 -1.816038 -4.768372e-07 -4.945649 0 0 0 1 </matrix>
     <instance_geometry url="#Grid-mesh">
      <bind_material>
       <technique_common>

@@ -36,7 +36,7 @@ class WWDCStartScreenHandler : WWDCEventHandler {
                     "Applicant – Nathan Flurry",
                     fontName: "SourceSansPro-Regular",
                     size: 60,
-                    position: SCNVector3(0, -175, 250),
+                    position: SCNVector3(0, -175, 350),
                     alignment: kCAAlignmentCenter
                 )
                 applicantNode?.center()

@@ -4,14 +4,14 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2016-04-25T00:31:34Z</created>
-  <modified>2016-04-25T00:31:34Z</modified>
+  <created>2016-04-29T22:12:35Z</created>
+  <modified>2016-04-29T22:12:35Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Z_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>../SceneAssets.scnassets/gloss.png</init_from>
+   <init_from>gloss.png</init_from>
   </image>
  </library_images>
  <library_materials>
@@ -530,7 +530,7 @@
  <library_visual_scenes>
   <visual_scene id="scene20">
    <node id="iPhone" name="iPhone">
-    <matrix>1 0 0 0 0 1 0 0 0 0 1 0.05922256 0 0 0 1 </matrix>
+    <matrix>1.743119 0.295922 -0.9348602 -5.716129 -8.940695e-08 1.906752 0.6035658 1.253809 0.9805786 -0.5260436 1.661848 -0.7697122 0 0 0 1 </matrix>
     <instance_geometry url="#Plane-mesh">
      <bind_material>
       <technique_common>

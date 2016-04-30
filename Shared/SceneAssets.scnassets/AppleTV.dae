@@ -4,14 +4,14 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2016-04-25T00:33:53Z</created>
-  <modified>2016-04-25T00:33:53Z</modified>
+  <created>2016-04-29T20:17:51Z</created>
+  <modified>2016-04-29T20:17:51Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Z_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>../SceneAssets.scnassets/gloss.png</init_from>
+   <init_from>gloss.png</init_from>
   </image>
  </library_images>
  <library_materials>
@@ -220,7 +220,7 @@
  <library_visual_scenes>
   <visual_scene id="scene10">
    <node id="Body" name="Body">
-    <matrix>0.9502697 0 0 0 0 -1.192093e-07 -0.9502697 0.02837057 0 0.9502697 -1.192093e-07 -8.082314e-09 0 0 0 1 </matrix>
+    <matrix>1.796522 -0.8789248 -1.788139e-07 -0.4878972 5.960465e-08 -4.768372e-07 2 -0.06250952 -0.878925 -1.796522 -4.768372e-07 1.480178e-09 0 0 0 1 </matrix>
     <instance_geometry url="#Grid-mesh">
      <bind_material>
       <technique_common>

@@ -62,10 +62,10 @@ class WWDCGameView : SCNView {
         mainScene = WWDCMainScene(sceneView: self)
         
         // Allows the user to manipulate the camera
-        allowsCameraControl = true
+//        allowsCameraControl = true
         
         // Show statistics such as fps and timing information
-        showsStatistics = true
+//        showsStatistics = true
         
         // Enable jittering
         jitteringEnabled = true

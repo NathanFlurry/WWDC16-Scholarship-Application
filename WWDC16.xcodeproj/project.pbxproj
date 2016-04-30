@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF0C8D761CD1B84D00DBAEF9 /* LaughItUp.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */; };
-		BF0C8D771CD1B84D00DBAEF9 /* LaughItUp.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */; };
 		BF0C8D791CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */; };
 		BF0C8D7A1CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */; };
 		BF27F0751CCEC93C00CB30B3 /* CollectionType+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF27F0741CCEC93C00CB30B3 /* CollectionType+Magic.swift */; };
@@ -55,6 +53,8 @@
 		BF58DAB01CCC908F0036C5D0 /* SourceSansPro-SemiboldIt.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF58DA8B1CCC8E470036C5D0 /* SourceSansPro-SemiboldIt.ttf */; };
 		BF58DAB21CCC9FC70036C5D0 /* WWDCSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58DAB11CCC9FC70036C5D0 /* WWDCSpline.swift */; };
 		BF58DAB31CCC9FC70036C5D0 /* WWDCSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58DAB11CCC9FC70036C5D0 /* WWDCSpline.swift */; };
+		BF6D06EE1CD403E800910052 /* EventMedia.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6D06ED1CD403E800910052 /* EventMedia.scnassets */; };
+		BF6D06EF1CD403E800910052 /* EventMedia.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6D06ED1CD403E800910052 /* EventMedia.scnassets */; };
 		BF99BB081CC7C9AA003133AD /* WWDCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB061CC7C9AA003133AD /* WWDCColor.swift */; };
 		BF99BB091CC7C9AA003133AD /* WWDCTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */; };
 		BF99BB0C1CC7CA3A003133AD /* WWDCTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */; };
@@ -96,8 +96,6 @@
 		BFFF05851CD07F3400671A42 /* WWDCDisplayPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF05831CD07F3400671A42 /* WWDCDisplayPanel.swift */; };
 		BFFF05881CD0969900671A42 /* WWDCImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF05871CD0969900671A42 /* WWDCImage.swift */; };
 		BFFF05891CD0969900671A42 /* WWDCImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF05871CD0969900671A42 /* WWDCImage.swift */; };
-		BFFF058B1CD0972600671A42 /* TestImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFFF058A1CD0972600671A42 /* TestImage.jpg */; };
-		BFFF058C1CD0972600671A42 /* TestImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BFFF058A1CD0972600671A42 /* TestImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -125,7 +123,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = LaughItUp.mp4; sourceTree = "<group>"; };
 		BF0C8D781CD1CAD700DBAEF9 /* SCNNode+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCNNode+Magic.swift"; path = "Shared/SCNNode+Magic.swift"; sourceTree = "<group>"; };
 		BF27F0741CCEC93C00CB30B3 /* CollectionType+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+Magic.swift"; path = "Shared/CollectionType+Magic.swift"; sourceTree = "<group>"; };
 		BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCFloor.swift; path = Shared/WWDCFloor.swift; sourceTree = "<group>"; };
@@ -149,6 +146,7 @@
 		BF58DA8A1CCC8E470036C5D0 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Semibold.ttf"; path = "Shared/Fonts/SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
 		BF58DA8B1CCC8E470036C5D0 /* SourceSansPro-SemiboldIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-SemiboldIt.ttf"; path = "Shared/Fonts/SourceSansPro-SemiboldIt.ttf"; sourceTree = "<group>"; };
 		BF58DAB11CCC9FC70036C5D0 /* WWDCSpline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCSpline.swift; path = Shared/WWDCSpline.swift; sourceTree = "<group>"; };
+		BF6D06ED1CD403E800910052 /* EventMedia.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = EventMedia.scnassets; path = Shared/EventMedia.scnassets; sourceTree = "<group>"; };
 		BF99BB061CC7C9AA003133AD /* WWDCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCColor.swift; path = Shared/WWDCColor.swift; sourceTree = "<group>"; };
 		BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCTimeline.swift; path = Shared/WWDCTimeline.swift; sourceTree = "<group>"; };
 		BF99BB121CC81C17003133AD /* WWDCEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCEvent.swift; path = Shared/WWDCEvent.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 		BFFF05801CD0633400671A42 /* WWDCTransformOffsetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCTransformOffsetable.swift; path = Shared/WWDCTransformOffsetable.swift; sourceTree = "<group>"; };
 		BFFF05831CD07F3400671A42 /* WWDCDisplayPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCDisplayPanel.swift; path = Shared/WWDCDisplayPanel.swift; sourceTree = "<group>"; };
 		BFFF05871CD0969900671A42 /* WWDCImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCImage.swift; path = Shared/WWDCImage.swift; sourceTree = "<group>"; };
-		BFFF058A1CD0972600671A42 /* TestImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,8 +299,7 @@
 				BF99BB191CC841E0003133AD /* WWDCDate.swift */,
 				BF4D45B61CCC1A3A007DEA9A /* WWDCCamera.swift */,
 				BF2AF29C1CC67DD8006A9BBB /* WWDCFloor.swift */,
-				BF0C8D751CD1B84D00DBAEF9 /* LaughItUp.mp4 */,
-				BFFF058A1CD0972600671A42 /* TestImage.jpg */,
+				BF6D06ED1CD403E800910052 /* EventMedia.scnassets */,
 				BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */,
 				BFDCCF771CCF2B6600EB894F /* Event Handlers */,
 				BF99BB0E1CC8154E003133AD /* Magic */,
@@ -423,12 +419,11 @@
 				BF58DA981CCC8E470036C5D0 /* SourceSansPro-It.ttf in Resources */,
 				BF58DA8C1CCC8E470036C5D0 /* SourceSansPro-Black.ttf in Resources */,
 				BF58DA901CCC8E470036C5D0 /* SourceSansPro-Bold.ttf in Resources */,
+				BF6D06EE1CD403E800910052 /* EventMedia.scnassets in Resources */,
 				BF58DA9C1CCC8E470036C5D0 /* SourceSansPro-LightIt.ttf in Resources */,
 				BF58DA921CCC8E470036C5D0 /* SourceSansPro-BoldIt.ttf in Resources */,
 				BFB6223C1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */,
-				BF0C8D761CD1B84D00DBAEF9 /* LaughItUp.mp4 in Resources */,
 				BF58DAA01CCC8E470036C5D0 /* SourceSansPro-Semibold.ttf in Resources */,
-				BFFF058B1CD0972600671A42 /* TestImage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,10 +432,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFB6223D1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */,
-				BFFF058C1CD0972600671A42 /* TestImage.jpg in Resources */,
+				BF6D06EF1CD403E800910052 /* EventMedia.scnassets in Resources */,
 				BFB6222E1CC5E5770094C945 /* Assets.xcassets in Resources */,
 				BFB622311CC5E5770094C945 /* MainMenu.xib in Resources */,
-				BF0C8D771CD1B84D00DBAEF9 /* LaughItUp.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

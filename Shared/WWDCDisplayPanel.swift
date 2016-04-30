@@ -7,10 +7,25 @@
 //
 
 import SceneKit
+import SpriteKit
 import AVFoundation
 
 enum WWDCDisplayPanelContents {
-    case Image(String), Video(String, String)
+    case Image(String, String), Video(String, String)
+    
+    func getUrl(prefix: String = "") -> NSURL? { // Returns the URL for the resource
+        var fileName: String?
+        var fileExt: String?
+        switch self {
+        case .Image(let name, let ext):
+            fileName = name
+            fileExt = ext
+        case .Video(let name, let ext):
+            fileName = name
+            fileExt = ext
+        }
+        return NSBundle.mainBundle().URLForResource(fileName != nil ? prefix + fileName! : nil, withExtension: fileExt)
+    }
 }
 
 class WWDCDisplayPanel : SCNPlane {
@@ -79,21 +94,37 @@ class WWDCDisplayPanel : SCNPlane {
     
     private func loadData() {
         // Get the material contents and data
+        let eventMediaBase: String = "EventMedia.scnassets/"
         var materialContents: AnyObject?
         switch contents {
-        case .Image(let imageName):
+        case .Image(_, _):
             // Get the image
-            let image = WWDCImage(named: imageName)
-            
-            // Set the size
-            contentSize = image?.size
-            
-            // Set the material contents
-            materialContents = image
-        case .Video(let videoName, let videoExtension):
+            if let url = contents.getUrl(eventMediaBase), data = NSData(contentsOfURL: url) {
+                // Get the image
+                let image = WWDCImage(data: data)
+
+                // Set the size
+                contentSize = image?.size
+
+                // Set the material contents
+                materialContents = image
+                
+                // Create the background layer
+//                let backgroundLayer = CALayer() // TODO: Remove
+//                backgroundLayer.backgroundColor = WWDCColor.blueColor().CGColor // TODO: Add back
+//                backgroundLayer.frame = CGRect(origin: CGPointZero, size: contentSize!)
+                
+                // Return the layer
+//                materialContents = backgroundLayer
+            } else {
+                print("Could not get URL for \(contents).")
+            }
+        case .Video(_, _):
             // Get the URL
-            if let url = NSBundle.mainBundle().URLForResource(videoName, withExtension: videoExtension) {
+            if let url = contents.getUrl(eventMediaBase) {
                 materialContents = generatePlayer(url)
+            } else {
+                print("Could not get URL for \(contents).")
             }
         }
         
@@ -117,7 +148,7 @@ class WWDCDisplayPanel : SCNPlane {
         }
     }
     
-    private func generatePlayer(url: NSURL) -> CALayer? {
+    private func generatePlayer(url: NSURL) -> /*SKScene?*/ CALayer? { // FIXME: For some reason, this creates black bar under videos
         // Create the player
         let player = AVPlayer(URL: url)
         self.player = player
@@ -138,7 +169,7 @@ class WWDCDisplayPanel : SCNPlane {
             usingBlock: WWDCDisplayPanel.playerLoopBlock
         )
         
-        // Play
+        // Play the video
         player.play()
         
         // Get the video size
@@ -153,16 +184,23 @@ class WWDCDisplayPanel : SCNPlane {
         
         // Create the player layer
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        playerLayer.frame = CGRect(origin: CGPointZero, size: trackSize) // TODO: Resize
+        playerLayer.videoGravity = AVLayerVideoGravityResize
+        playerLayer.frame = CGRect(origin: CGPointZero, size: trackSize)
         
         // Create the background layer
         let backgroundLayer = CALayer()
-        backgroundLayer.backgroundColor = WWDCColor.blackColor().CGColor
+        backgroundLayer.backgroundColor = WWDCColor.redColor().CGColor // TODO: Add back
         backgroundLayer.frame = playerLayer.frame
         backgroundLayer.addSublayer(playerLayer)
         
+//        // Create the scene
+//        let scene = SKScene(size: trackSize)
+//        
+//        let videoNode = SKVideoNode(AVPlayer: player)
+//        scene.addChild(videoNode)
+        
         // Return the layer
         return backgroundLayer
+//        return scene
     }
 }

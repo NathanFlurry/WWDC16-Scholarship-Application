@@ -18,12 +18,17 @@ class WWDCFloor : SCNNode {
         floor.reflectionFalloffStart = 0
         floor.reflectionFalloffEnd = 15
         
+        // Configure the material
         let floorMaterial = floor.firstMaterial!
-//        floorMaterial.diffuse.contents = "Floor.jpg"
+        
         floorMaterial.diffuse.contents = WWDCColors.charade
-        floorMaterial.locksAmbientWithDiffuse = true
-        floorMaterial.normal.contents = "NormalMap.png"
-        floorMaterial.normal.intensity = 0.5
+        floorMaterial.emission.contents = WWDCColors.charade
+        
+        floorMaterial.normal.contents = "SceneAssets.scnassets/NormalMap.png"
+        floorMaterial.normal.contentsTransform = SCNMatrix4MakeScale(100, 100, 1)
+        floorMaterial.normal.mipFilter = SCNFilterMode.Linear
+        floorMaterial.normal.intensity = 0.3
+        
         floor.firstMaterial = floorMaterial
         
         
