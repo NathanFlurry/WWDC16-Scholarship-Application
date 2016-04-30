@@ -6,10 +6,10 @@
 //  Copyright © 2016 Nathan Flurry. All rights reserved.
 //
 
+import SceneKit
+
 #if os(iOS)
-import UIKit
 typealias WWDCImage = UIImage
 #elseif os(OSX)
-import AppKit
 typealias WWDCImage = NSImage
 #endif

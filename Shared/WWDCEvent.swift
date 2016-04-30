@@ -38,7 +38,7 @@ class WWDCEvent : WWDCTimelineItem {
     let duplicateDatePositionOffset = SCNVector3(0, 1.5, -0.5)
     var duplicateDatesBefore: Int = 0 {
         didSet {
-            positionOffset = positionOffset + duplicateDatePositionOffset * CGFloat(duplicateDatesBefore)
+            positionOffset = positionOffset + duplicateDatePositionOffset * VFloat(duplicateDatesBefore)
         }
     }
     
@@ -73,10 +73,9 @@ class WWDCEvent : WWDCTimelineItem {
     var displayPanelNode: SCNNode?
     let displayPanelSize = 600 as CGFloat
     var displayPanelPosition: SCNVector3 {
-        return SCNVector3(
-            (absoluteSize.width / 2  + (titlePosition.x + textWidth)) / 2,
-            0, 0
-        )
+        let rightWidth = VFloat(absoluteSize.width / 2)
+        let avgCenter = VFloat(CGFloat(titlePosition.x) + textWidth) / 2
+        return SCNVector3((rightWidth + avgCenter) / 2, 0, 0)
     }
     var displayPanelScale: SCNVector3 { // Scales the display panel
         let s = 1 / slideScale
@@ -118,7 +117,7 @@ class WWDCEvent : WWDCTimelineItem {
                 date.description + (endDate != nil ? " - \(endDate!.description)" : ""),
                 fontName: titleDateFont,
                 size: titleSize,
-                position: titlePosition + SCNVector3(v2.x - v1.x + titleDatePadding, 0, 0)
+                position: titlePosition + SCNVector3(v2.x - v1.x + VFloat(titleDatePadding), 0, 0)
             )
         }
         
@@ -127,14 +126,14 @@ class WWDCEvent : WWDCTimelineItem {
             text,
             fontName: textFont,
             size: textSize,
-            position: SCNVector3(titlePosition.x, -absoluteSize.height / 2, 0),
+            position: SCNVector3(VFloat(titlePosition.x), VFloat(-absoluteSize.height / 2), 0),
             depth: 0,
             alignment: kCAAlignmentLeft,
             containerFrame: CGRect(
                 x: 0,
                 y: 0,
                 width: textWidth,
-                height: absoluteSize.height / 2 + titlePosition.y - textPadding
+                height: absoluteSize.height / 2 + CGFloat(titlePosition.y) - textPadding
             )
         )
         

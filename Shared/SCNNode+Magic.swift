@@ -13,6 +13,6 @@ extension SCNNode {
         var v1 = SCNVector3()
         var v2 = SCNVector3()
         getBoundingBoxMin(&v1, max: &v2)
-        position = position - (v2 - v1) / 2
+        position = position - (v2 - v1) / VFloat(2)
     }
 }

@@ -76,6 +76,12 @@
 		BFB622391CC5E65A0094C945 /* WWDCMainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB622371CC5E65A0094C945 /* WWDCMainScene.swift */; };
 		BFB6223C1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */; };
 		BFB6223D1CC5E8D20094C945 /* SceneAssets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */; };
+		BFB672331CD4945000781AC5 /* WWDCBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB672321CD4945000781AC5 /* WWDCBezierPath.swift */; };
+		BFB672341CD4945000781AC5 /* WWDCBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB672321CD4945000781AC5 /* WWDCBezierPath.swift */; };
+		BFB672361CD494D700781AC5 /* WWDCPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB672351CD494D700781AC5 /* WWDCPoint.swift */; };
+		BFB672371CD494D700781AC5 /* WWDCPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB672351CD494D700781AC5 /* WWDCPoint.swift */; };
+		BFB6723C1CD4973100781AC5 /* Float+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6723B1CD4973100781AC5 /* Float+Magic.swift */; };
+		BFB6723D1CD4973100781AC5 /* Float+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6723B1CD4973100781AC5 /* Float+Magic.swift */; };
 		BFDCCF6F1CCED94300EB894F /* SCNGeometry+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCCF6E1CCED94300EB894F /* SCNGeometry+Magic.swift */; };
 		BFDCCF701CCED9BB00EB894F /* SCNGeometry+Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCCF6E1CCED94300EB894F /* SCNGeometry+Magic.swift */; };
 		BFDCCF721CCF069500EB894F /* WWDCColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDCCF711CCF069500EB894F /* WWDCColors.swift */; };
@@ -165,6 +171,9 @@
 		BFB622321CC5E5770094C945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFB622371CC5E65A0094C945 /* WWDCMainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCMainScene.swift; path = Shared/WWDCMainScene.swift; sourceTree = "<group>"; };
 		BFB6223B1CC5E8D20094C945 /* SceneAssets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = SceneAssets.scnassets; path = Shared/SceneAssets.scnassets; sourceTree = "<group>"; };
+		BFB672321CD4945000781AC5 /* WWDCBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCBezierPath.swift; path = Shared/WWDCBezierPath.swift; sourceTree = "<group>"; };
+		BFB672351CD494D700781AC5 /* WWDCPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCPoint.swift; path = Shared/WWDCPoint.swift; sourceTree = "<group>"; };
+		BFB6723B1CD4973100781AC5 /* Float+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float+Magic.swift"; path = "Shared/Float+Magic.swift"; sourceTree = "<group>"; };
 		BFDCCF6E1CCED94300EB894F /* SCNGeometry+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCNGeometry+Magic.swift"; path = "Shared/SCNGeometry+Magic.swift"; sourceTree = "<group>"; };
 		BFDCCF711CCF069500EB894F /* WWDCColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCColors.swift; path = Shared/WWDCColors.swift; sourceTree = "<group>"; };
 		BFDCCF741CCF22F200EB894F /* NSObject+Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+Magic.swift"; path = "Shared/NSObject+Magic.swift"; sourceTree = "<group>"; };
@@ -219,6 +228,7 @@
 			children = (
 				BF4D45A71CCB088F007DEA9A /* SCNCamera+Magic.swift */,
 				BF4D45AD1CCC1849007DEA9A /* CGFloat+Magic.swift */,
+				BFB6723B1CD4973100781AC5 /* Float+Magic.swift */,
 				BF4D45B01CCC19EF007DEA9A /* SCNVector3+Magic.swift */,
 				BFF4B8D61CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift */,
 				BFF4B8D91CCD64A600C7E548 /* SCNAction+Magic.swift */,
@@ -323,6 +333,8 @@
 				BF99BB061CC7C9AA003133AD /* WWDCColor.swift */,
 				BF4D45C81CCC4BCC007DEA9A /* WWDCFont.swift */,
 				BFFF05871CD0969900671A42 /* WWDCImage.swift */,
+				BFB672321CD4945000781AC5 /* WWDCBezierPath.swift */,
+				BFB672351CD494D700781AC5 /* WWDCPoint.swift */,
 			);
 			name = Bridge;
 			sourceTree = "<group>";
@@ -396,8 +408,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFB622061CC5E55D0094C945 /* WWDC16iOS */,
 				BFB622221CC5E5770094C945 /* WWDC16macOS */,
+				BFB622061CC5E55D0094C945 /* WWDC16iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -458,12 +470,15 @@
 				BF99BB161CC81C45003133AD /* WWDCMarker.swift in Sources */,
 				BFDCCF751CCF22F200EB894F /* NSObject+Magic.swift in Sources */,
 				BF2AF29D1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */,
+				BFB6723D1CD4973100781AC5 /* Float+Magic.swift in Sources */,
+				BFB672371CD494D700781AC5 /* WWDCPoint.swift in Sources */,
 				BF99BB081CC7C9AA003133AD /* WWDCColor.swift in Sources */,
 				BFB6220B1CC5E55D0094C945 /* AppDelegate.swift in Sources */,
 				BF4D45B71CCC1A3A007DEA9A /* WWDCCamera.swift in Sources */,
 				BF0C8D791CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */,
 				BF4D45A81CCB088F007DEA9A /* SCNCamera+Magic.swift in Sources */,
 				BF4D45AE1CCC1849007DEA9A /* CGFloat+Magic.swift in Sources */,
+				BFB672341CD4945000781AC5 /* WWDCBezierPath.swift in Sources */,
 				BFF4B8DA1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */,
 				BFFF05881CD0969900671A42 /* WWDCImage.swift in Sources */,
 				BFF4B8D71CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift in Sources */,
@@ -493,12 +508,15 @@
 				BF99BB0D1CC7CA3A003133AD /* WWDCColor.swift in Sources */,
 				BFDCCF761CCF22F200EB894F /* NSObject+Magic.swift in Sources */,
 				BF99BB141CC81C17003133AD /* WWDCEvent.swift in Sources */,
+				BFB6723C1CD4973100781AC5 /* Float+Magic.swift in Sources */,
+				BFB672361CD494D700781AC5 /* WWDCPoint.swift in Sources */,
 				BFB622261CC5E5770094C945 /* AppDelegate.swift in Sources */,
 				BF2AF29E1CC67DD8006A9BBB /* WWDCFloor.swift in Sources */,
 				BF4D45B81CCC1A3A007DEA9A /* WWDCCamera.swift in Sources */,
 				BF0C8D7A1CD1CAD700DBAEF9 /* SCNNode+Magic.swift in Sources */,
 				BF4D45A91CCB08CE007DEA9A /* SCNCamera+Magic.swift in Sources */,
 				BF4D45AF1CCC1894007DEA9A /* CGFloat+Magic.swift in Sources */,
+				BFB672331CD4945000781AC5 /* WWDCBezierPath.swift in Sources */,
 				BFF4B8DB1CCD64A600C7E548 /* SCNAction+Magic.swift in Sources */,
 				BFFF05891CD0969900671A42 /* WWDCImage.swift in Sources */,
 				BFF4B8D81CCD63C900C7E548 /* WWDCTimingFunctions+Magic.swift in Sources */,

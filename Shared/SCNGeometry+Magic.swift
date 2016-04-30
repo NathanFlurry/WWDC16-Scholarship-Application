@@ -6,12 +6,16 @@
 //  Copyright © 2016 Nathan Flurry. All rights reserved.
 //
 
-import AppKit
+import SceneKit
 
 let straightChamferProfile = {
-    () -> NSBezierPath in
-    var path = NSBezierPath()
-    path.moveToPoint(NSPoint(x: 0, y: 1))
-    path.lineToPoint(NSPoint(x: 1, y: 0))
+    () -> WWDCBezierPath in
+    var path = WWDCBezierPath()
+    path.moveToPoint(WWDCPoint(x: 0, y: 1))
+    #if os(iOS)
+    path.addLineToPoint(WWDCPoint(x: 1, y: 0))
+    #elseif os(OSX)
+    path.lineToPoint(WWDCPoint(x: 1, y: 0))
+    #endif
     return path
 }()

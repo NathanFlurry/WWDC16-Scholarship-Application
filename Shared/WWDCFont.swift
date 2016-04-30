@@ -6,10 +6,10 @@
 //  Copyright © 2016 Nathan Flurry. All rights reserved.
 //
 
+import SceneKit
+
 #if os(iOS)
-import UIKit
 typealias WWDCFont = UIFont
 #elseif os(OSX)
-import AppKit
 typealias WWDCFont = NSFont
 #endif

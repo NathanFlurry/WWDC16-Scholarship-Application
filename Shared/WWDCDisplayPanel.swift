@@ -7,7 +7,6 @@
 //
 
 import SceneKit
-import SpriteKit
 import AVFoundation
 
 enum WWDCDisplayPanelContents {
@@ -71,6 +70,7 @@ class WWDCDisplayPanel : SCNPlane {
     }
     
     // Private properties
+    private let queue: NSOperationQueue
     private var contentSize: CGSize? {
         didSet {
             updateGeometry()
@@ -81,6 +81,9 @@ class WWDCDisplayPanel : SCNPlane {
     init(contents: WWDCDisplayPanelContents, size: CGFloat) { // Size is the size to fit the box in
         self.contents = contents
         self.size = size
+        
+        queue = NSOperationQueue()
+        queue.maxConcurrentOperationCount = 1
         
         super.init()
         
@@ -108,14 +111,6 @@ class WWDCDisplayPanel : SCNPlane {
 
                 // Set the material contents
                 materialContents = image
-                
-                // Create the background layer
-//                let backgroundLayer = CALayer() // TODO: Remove
-//                backgroundLayer.backgroundColor = WWDCColor.blueColor().CGColor // TODO: Add back
-//                backgroundLayer.frame = CGRect(origin: CGPointZero, size: contentSize!)
-                
-                // Return the layer
-//                materialContents = backgroundLayer
             } else {
                 print("Could not get URL for \(contents).")
             }
@@ -149,58 +144,49 @@ class WWDCDisplayPanel : SCNPlane {
     }
     
     private func generatePlayer(url: NSURL) -> /*SKScene?*/ CALayer? { // FIXME: For some reason, this creates black bar under videos
-        // Create the player
-        let player = AVPlayer(URL: url)
-        self.player = player
-        player.actionAtItemEnd = AVPlayerActionAtItemEnd.None
-        
-//        NSNotificationCenter.defaultCenter().addObserver(
-//            self,
-//            selector: Selector("hello:"),
-//            name: AVPlayerItemDidPlayToEndTimeNotification,
-//            object: player.currentItem
-//        )
-        
-        // Loop the video
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            AVPlayerItemDidPlayToEndTimeNotification,
-            object: player.currentItem,
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: WWDCDisplayPanel.playerLoopBlock
-        )
-        
-        // Play the video
-        player.play()
-        
-        // Get the video size
-        let trackSize: CGSize
-        if let track = player.currentItem?.asset.tracks[0] {
-            trackSize = track.naturalSize
-            contentSize = trackSize
-        } else {
-            print("Could not get the track for WWDCDisplayPanel.")
-            return nil
-        }
-        
-        // Create the player layer
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.videoGravity = AVLayerVideoGravityResize
-        playerLayer.frame = CGRect(origin: CGPointZero, size: trackSize)
         
         // Create the background layer
         let backgroundLayer = CALayer()
         backgroundLayer.backgroundColor = WWDCColor.redColor().CGColor // TODO: Add back
-        backgroundLayer.frame = playerLayer.frame
-        backgroundLayer.addSublayer(playerLayer)
+        backgroundLayer.frame = CGRectZero
         
-//        // Create the scene
-//        let scene = SKScene(size: trackSize)
-//        
-//        let videoNode = SKVideoNode(AVPlayer: player)
-//        scene.addChild(videoNode)
+        // Load the video and add it as a sublayer
+        queue.addOperationWithBlock {
+            // Create the player
+            let player = AVPlayer(URL: url)
+            self.player = player
+            player.actionAtItemEnd = AVPlayerActionAtItemEnd.None
+            
+            // Loop the video
+            NSNotificationCenter.defaultCenter().addObserverForName(
+                AVPlayerItemDidPlayToEndTimeNotification,
+                object: player.currentItem,
+                queue: NSOperationQueue.mainQueue(),
+                usingBlock: WWDCDisplayPanel.playerLoopBlock
+            )
+            
+            // Play the video
+            player.play()
+            
+            // Get the track itself
+            guard let track = player.currentItem?.asset.tracks[0] else {
+                print("Could not get the track for WWDCDisplayPanel.")
+                return
+            }
+            
+            // Get the track size
+            let trackSize = track.naturalSize
+            self.contentSize = trackSize
+            
+            // Create the player layer
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.videoGravity = AVLayerVideoGravityResize
+            playerLayer.frame = CGRect(origin: CGPointZero, size: trackSize)
+            backgroundLayer.frame = playerLayer.frame // Resize background
+            backgroundLayer.addSublayer(playerLayer) // Add player layer
+        }
         
         // Return the layer
         return backgroundLayer
-//        return scene
     }
 }

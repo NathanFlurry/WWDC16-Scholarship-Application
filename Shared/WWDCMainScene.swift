@@ -12,8 +12,10 @@ import SceneKit
  Notes for readers:
  - This was all programmed from beginning to finish in one and a half weeks
  - This was inspired by the WWDC '14 SceneKit session, in case it looks mildly familiar
+ - There's an odd issue where there's black bars around some of the videos – I spend quite a long time trying to debug this, but I didn't have any luck. I'll be posting a bug report soon.
  - I have never used SceneKit (only SpriteKit, both of which are amazing) before beginning this project
  - Let's just say that writting proper Git commit changelogs was *not* my top priority ;)
+ - Enjoy the protocol spaghetti with my hacks for getting SCNVector3 to work across platforms
  - Finally, I appreciate you considering my application for a scholarship
  */
 
@@ -88,7 +90,7 @@ class WWDCMainScene : SCNScene {
                         date: WWDCDate(properMonth: 7, year: 2015),
                         title: "GrainTracker",
                         text: "Grain Tracker was an iOS inventory application for food banks developed in thirty-six hours for the first Great Arizona <Code> Challenge. The application included the ability to quickly and easily add items to the inventory by scanning the barcode with the phone's camera, fetch the nutrition information of an item from the web or manually entered data, and instantly provide photos of the products from Google Images inline.",
-                        media: .Image("GrainTracker", "mov")
+                        media: .Image("GrainTracker", "png")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 5, year: 2015),
@@ -139,7 +141,7 @@ class WWDCMainScene : SCNScene {
                         () -> [SCNVector3] in
                         var arr = [SCNVector3]()
                         for i in 0...8 {
-                            arr += [ SCNVector3(CGFloat.random() * 200 - 100, 0, -CGFloat(i) * 75) ]
+                            arr += [ SCNVector3(VFloat.random() * 200 - 100, 0, -VFloat(i) * 75) ]
                         }
                         return arr
                     }(),
