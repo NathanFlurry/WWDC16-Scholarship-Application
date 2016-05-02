@@ -13,7 +13,7 @@ extension Float {
     static let pi = Float(M_PI)
     
     static func random() -> Float {
-        return Float(random()) / Float(RAND_MAX)
+        return Float(arc4random()) / Float(UINT32_MAX)
     }
     
     // Linearly interpolates between to values

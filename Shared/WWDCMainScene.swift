@@ -58,76 +58,82 @@ class WWDCMainScene : SCNScene {
                     try WWDCMarker(date: WWDCDate(properMonth: 9, year: 2013), sceneName: "eMac"),
                     
                     WWDCEvent(
+                        date: WWDCDate(properMonth: 10, year: 2016),
+                        title: "",
+                        text: "",
+                        customHandler: WWDCEndScreenHandler()
+                    ),
+                    WWDCEvent(
                         date: WWDCDate(properMonth: 8, year: 2016),
-                        title: "Neural Networking Project",
-                        text: "Stuff"
+                        title: "ANN Project",
+                        text: "As my elective for school next year, I will be doing a research project on artificial neural networking (ANN). This will consist of doing research, creating a product, and writing a thesis on it."
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 8, year: 2016),
                         title: "Programming Club",
-                        text: "Stuff"
+                        text: "Next year, I will be hosting a programming club in order to teach students computer science principles in Swift."
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 5, year: 2016),
                         endDate: WWDCDate(properMonth: 7, year: 2016),
                         title: "Wiblits Internship",
-                        text: "Stuff"
+                        text: "This summer, I will be living in Phoenix for two months to work with a team on Wiblits – an app that allows players to compete in quick, fun micro-games with their friends and others. I will be working on both the backend and the iOS client."
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 8, year: 2015),
                         endDate: WWDCDate(properMonth: 5, year: 2016),
                         title: "Aroid (WIP)",
-                        text: "Aroid is a massively multiplayer online game that I am currently working on. The players' goal is to fly their ship around and infinite, procedurally generated universe while shooting other ships and asteroids — essentially a multiplayer version of the original arcade game, Asteroids.",
-                        media: .Video("Aroid", "mov")
+                        text: "Aroid is a multiplayer game where players use their spaceships to battle each other in space  — essentially a modernized, multiplayer version of the original arcade game, Asteroids. So far, the game has thirty-two uniquely different ships, seven weapons, twelve special abilities, seven game modes, and much more. The game is set to be released late this summer.",
+                        media: .Video("Aroid", "mp4")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 7, year: 2015),
                         title: "Chomp",
-                        text: "Chomp was a game developed for the forty-eight hour game development competition, Ludum Dare. In the game's cartoon post-apocalyptic world, the player is tasked with the duty of feeding hungry monsters. To do this, the player must launch whimsical carcasses into the air and into the monsters' mouths for them to gobble up. entry was peer-ranked within the top 20% among thousands of other entries.",
-                        media: .Video("Chomp", "mov")
+                        text: "Chomp was a game developed for the forty-eight hour game development competition, Ludum Dare. In the game's cartoon post-apocalyptic world, the player is tasked with the duty of feeding hungry monsters. To do this, the player must launch whimsical carcasses into the air and into the monsters' mouths for them to gobble up. The entry was peer-ranked within the top 20% among thousands of other entries.",
+                        media: .Video("Chomp", "mp4")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 7, year: 2015),
                         title: "GrainTracker",
-                        text: "Grain Tracker was an iOS inventory application for food banks developed in thirty-six hours for the first Great Arizona <Code> Challenge. The application included the ability to quickly and easily add items to the inventory by scanning the barcode with the phone's camera, fetch the nutrition information of an item from the web or manually entered data, and instantly provide photos of the products from Google Images inline.",
+                        text: "Grain Tracker was an iOS inventory application for food banks developed in thirty-six hours for the first Great Arizona <Code> Challenge. The application included the ability to quickly and easily add items to the inventory by scanning the barcode with the phone's camera, fetch the nutrition information of an item from the web automatically, and instantly provide photos of the products from Google Images inline. This project was awarded second place.",
                         media: .Image("GrainTracker", "png")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 5, year: 2015),
                         endDate: WWDCDate(properMonth: 8, year: 2015),
                         title: "Jubel",
-                        text: "Jubel was an iOS prototype for a consumer-friendly shopping platform that combines the social aspect of shopping with the convenience of online shopping.",
-                        media: .Video("Jubel", "mov")
+                        text: "Jubel is a prototype for a consumer-friendly shopping platform that combines the social aspect of shopping with the convenience of online shopping. I did not have the time nor money to complete the project to the extend I wished, so I put the undertaking on hold.",
+                        media: .Video("Jubel", "mp4")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 12, year: 2014),
                         title: "CatchPhrase",
-                        text: "As a short project, I developed a small CatchPhrase clone with NodeJS and HTML5. With the game, players can each have their own individual mobile device and all play the game in which one player on each team must attempt to describe a word or phrase without using the word itself.",
-                        media: .Video("CatchPhrase", "mov")
+                        text: "As a short project completed in five days, I developed a small CatchPhrase clone. In the game, players can each have their own individual mobile device and all play together. The goal of the game is to have one player on each team attempt to describe a word or phrase without using the word itself.",
+                        media: .Video("CatchPhrase", "mp4")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 4, year: 2014),
                         endDate: WWDCDate(properMonth: 4, year: 2015),
                         title: "LaughItUp",
-                        text: "As a project to get aquatinted with server-side technologies, LaughItUp was a social network I developed that allowed users to consume and provide humorous content. While the project did gain some traction, I decided it did not have the market available to make it worthwhile to polish and release the app.",
-                        media: .Video("LaughItUp", "mov")
+                        text: "As a project to get aquatinted with full-stack development, LaughItUp was a social network concept I developed that allowed users to consume and provide humorous content. While the project did gain some traction, I decided it did not have the market available to make it worthwhile to polish and release the app.",
+                        media: .Video("LaughItUp", "mp4")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 12, year: 2013),
                         title: "KickAsteroids",
-                        text: "Developed for the Winter Codea Holiday Cook Off competition, I developed a game called KickAsteroids. The goal of the game is to defend your planet by dragging your finger around the screen to shatter the retro-looking asteroids.",
-                        media: .Video("KickAsteroids", "mov")
+                        text: "Developed for the Winter Codea Holiday Cook Off competition, I developed a game called KickAsteroids. The goal of the game is to defend your planet by dragging your finger around the screen to shatter the retro-looking asteroids. This game was awarded second place in the competition.",
+                        media: .Video("KickAsteroids", "mp4")
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 12, year: 2013),
                         title: "SnakeChase",
-                        text: "For the Ludum Dare forty-eight hour competition, I developed a game called SnakeChase. Playing as a snake, the player's goal is to navigate around an infinite world collecting as many moving blobs as possible. Each time the player eats a blob, the snake becomes longer. When one of these moving blobs touches the side of the player, the the snake is cut off at the point of impact and the player loses a \"life.\""
+                        text: "For a Ludum Dare forty-eight hour competition, I developed a game called SnakeChase. Playing as a snake, the player's goal is to navigate around an infinite, procedurally generated world collecting as many moving blobs as possible. Each time the player eats a blob, the snake becomes longer. When one of these moving blobs touches the side of the player, the the snake is cut off at the point of impact and the player loses a \"life.\""
                     ),
                     WWDCEvent(
                         date: WWDCDate(properMonth: 10, year: 2013),
                         title: "StackIt",
-                        text: "In the game, StackIt, the player's goal is to move and tilt a paddle left and right to balance objects falling from the sky while not letting them fall off the paddle. Among many nifty features of the game, one is the dynamic background which reflects the current weather, moon phase, time of day, and special themes for holidays. The game ended up receiving fourteen thousand downloads total.",
-                        media: .Video("StackIt", "mov")
+                        text: "In the game StackIt, the player's goal is to move and tilt a paddle in order to balance objects falling from the sky while not letting them fall off the paddle into oblivion. The game features a dynamic background which reflects the current weather, moon phase, time of day, and special themes for holidays. The game ended up receiving tens of thousand of downloads in total.",
+                        media: .Video("StackIt", "mp4")
                     ),
                     WWDCEvent( // Starter slide
                         date: WWDCDate(properMonth: 9, year: 2013),
@@ -219,7 +225,7 @@ class WWDCMainScene : SCNScene {
     func transitionToIndex(index: Int) {
         // Check the index is in range
         guard index < timeline.events.count && index >= 0 else {
-            print("Slide index \(index) out of range.")
+//            print("Slide index \(index) out of range.")
             return
         }
         

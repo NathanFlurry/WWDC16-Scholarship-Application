@@ -15,8 +15,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
-                <menuItem title="WWDC16" id="56">
-                    <menu key="submenu" title="WWDC16" systemMenu="apple" id="57">
+                <menuItem title="Nathan Flurry WWDC'16" id="56">
+                    <menu key="submenu" title="Nathan Flurry WWDC'16" systemMenu="apple" id="57">
                         <items>
                             <menuItem title="About WWDC16macOS" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>

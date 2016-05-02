@@ -55,6 +55,8 @@
 		BF58DAB31CCC9FC70036C5D0 /* WWDCSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF58DAB11CCC9FC70036C5D0 /* WWDCSpline.swift */; };
 		BF6D06EE1CD403E800910052 /* EventMedia.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6D06ED1CD403E800910052 /* EventMedia.scnassets */; };
 		BF6D06EF1CD403E800910052 /* EventMedia.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6D06ED1CD403E800910052 /* EventMedia.scnassets */; };
+		BF8B0C891CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B0C881CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift */; };
+		BF8B0C8A1CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B0C881CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift */; };
 		BF99BB081CC7C9AA003133AD /* WWDCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB061CC7C9AA003133AD /* WWDCColor.swift */; };
 		BF99BB091CC7C9AA003133AD /* WWDCTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */; };
 		BF99BB0C1CC7CA3A003133AD /* WWDCTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */; };
@@ -153,6 +155,7 @@
 		BF58DA8B1CCC8E470036C5D0 /* SourceSansPro-SemiboldIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-SemiboldIt.ttf"; path = "Shared/Fonts/SourceSansPro-SemiboldIt.ttf"; sourceTree = "<group>"; };
 		BF58DAB11CCC9FC70036C5D0 /* WWDCSpline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCSpline.swift; path = Shared/WWDCSpline.swift; sourceTree = "<group>"; };
 		BF6D06ED1CD403E800910052 /* EventMedia.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = EventMedia.scnassets; path = Shared/EventMedia.scnassets; sourceTree = "<group>"; };
+		BF8B0C881CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCEndScreenHandler.swift; path = Shared/WWDCEndScreenHandler.swift; sourceTree = "<group>"; };
 		BF99BB061CC7C9AA003133AD /* WWDCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCColor.swift; path = Shared/WWDCColor.swift; sourceTree = "<group>"; };
 		BF99BB071CC7C9AA003133AD /* WWDCTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCTimeline.swift; path = Shared/WWDCTimeline.swift; sourceTree = "<group>"; };
 		BF99BB121CC81C17003133AD /* WWDCEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WWDCEvent.swift; path = Shared/WWDCEvent.swift; sourceTree = "<group>"; };
@@ -323,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				BFDCCF781CCF2B7D00EB894F /* WWDCStartScreenHandler.swift */,
+				BF8B0C881CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift */,
 			);
 			name = "Event Handlers";
 			sourceTree = "<group>";
@@ -488,6 +492,7 @@
 				BF4D45C91CCC4BCC007DEA9A /* WWDCFont.swift in Sources */,
 				BF99BB091CC7C9AA003133AD /* WWDCTimeline.swift in Sources */,
 				BF99BB1A1CC841E0003133AD /* WWDCDate.swift in Sources */,
+				BF8B0C8A1CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +531,7 @@
 				BF4D45CA1CCC4BCC007DEA9A /* WWDCFont.swift in Sources */,
 				BF99BB1B1CC841E0003133AD /* WWDCDate.swift in Sources */,
 				BF99BB0C1CC7CA3A003133AD /* WWDCTimeline.swift in Sources */,
+				BF8B0C891CD6BF7600F46DC2 /* WWDCEndScreenHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

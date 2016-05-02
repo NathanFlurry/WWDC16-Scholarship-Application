@@ -139,7 +139,7 @@ class WWDCDisplayPanel : SCNPlane {
             // Set the corner radius
             cornerRadius = cornerPercentRadius * (width < height ? width : height)
         } else {
-            print("No content size set for WWDCDisplayPanel.")
+//            print("No content size set for WWDCDisplayPanel.")
         }
     }
     
@@ -178,12 +178,14 @@ class WWDCDisplayPanel : SCNPlane {
             let trackSize = track.naturalSize
             self.contentSize = trackSize
             
-            // Create the player layer
-            let playerLayer = AVPlayerLayer(player: player)
-            playerLayer.videoGravity = AVLayerVideoGravityResize
-            playerLayer.frame = CGRect(origin: CGPointZero, size: trackSize)
-            backgroundLayer.frame = playerLayer.frame // Resize background
-            backgroundLayer.addSublayer(playerLayer) // Add player layer
+            // Create the player layer on the main thread
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                let playerLayer = AVPlayerLayer(player: player)
+                playerLayer.videoGravity = AVLayerVideoGravityResize
+                playerLayer.frame = CGRect(origin: CGPointZero, size: trackSize)
+                backgroundLayer.frame = playerLayer.frame // Resize background
+                backgroundLayer.addSublayer(playerLayer) // Add player layer
+            }
         }
         
         // Return the layer

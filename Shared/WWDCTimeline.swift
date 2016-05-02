@@ -85,7 +85,7 @@ class WWDCTimeline : SCNNode {
             if item.date < minDate { minDate = item.date }
             if item.date > maxDate { maxDate = item.date }
         }
-        startDate = minDate // - dateRangePadding
+        startDate = minDate - dateRangePadding
         endDate = maxDate + dateRangePadding
         
         super.init()
@@ -109,7 +109,7 @@ class WWDCTimeline : SCNNode {
     let datesNode: SCNNode // Node which all the dates are under
     let startDate: WWDCDate // The starting date for all the date objects
     let endDate: WWDCDate // The ending date
-    let dateRangePadding = 6 // Months around the first and last items that the dates should still be created
+    let dateRangePadding = 0 // Months around the first and last items that the dates should still be created
     
     let dateFontName = "SourceSansPro-Regular"
     let dateYearFontName = "SourceSansPro-Bold"
